@@ -1,0 +1,130 @@
+﻿@{
+    ViewData["Title"] = "Catálogo de Productos";
+}
+
+<!-- 🌷 TOAST ROSEA -->
+<div class="toast-container position-fixed bottom-0 end-0 p-4">
+    <div id="roseToast" class="toast align-items-center border-0" role="alert">
+        <div class="d-flex">
+            <div class="toast-body text-rose fw-semibold">
+                Mensaje aquí
+            </div>
+            <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast"></button>
+        </div>
+    </div>
+</div>
+
+<!-- 🌸 MODAL CONFIRMAR ELIMINAR (kept) -->
+<div class="modal fade" id="modalConfirmar" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content producto-card text-center p-4">
+
+            <h5 class="text-rose mb-3">¿Eliminar producto? 🗑️</h5>
+
+            <p class="text-muted">
+                Esta acción no se puede deshacer.
+            </p>
+
+            <div class="d-flex justify-content-center gap-3 mt-3">
+                <button class="btn btn-outline-rose" data-bs-dismiss="modal">
+                    Cancelar
+                </button>
+
+                <button id="btnConfirmarEliminar" class="btn btn-rose">
+                    Sí, eliminar 💗
+                </button>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="hero-section text-center">
+    <h1 class="fw-bold">Gestión de Productos</h1>
+</div>
+
+<div class="container mt-5">
+
+    <div class="row g-4">
+
+        <!-- 🩷 COLUMNA IZQUIERDA: AGREGAR / EDITAR -->
+        <div class="col-lg-4">
+            <!-- ADD PANEL (visible by default) -->
+            <div id="panelAgregar" class="producto-card">
+                <h4 class="text-rose mb-3">Agregar Producto</h4>
+
+                <input class="form-control mb-3" id="nombre" placeholder="Nombre del producto" />
+                <input class="form-control mb-3" id="descripcion" placeholder="Descripción" />
+                <input class="form-control mb-3" id="precio" type="number" placeholder="Precio" />
+
+                <label class="form-label small">Imagen (opcional)</label>
+                <input class="form-control mb-2" id="imagen" type="file" accept="image/*" />
+                <div class="mb-3">
+                    <img id="previewImage" src="data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='120'%20height='90'%20viewBox='0%200%20120%2090'%3E%3Crect%20width='120'%20height='90'%20fill='%23f8f9fa'/%3E%3Ctext%20x='50%25'%20y='50%25'%20dominant-baseline='middle'%20text-anchor='middle'%20fill='%23adb5bd'%20font-size='10'%3ENo%20image%3C/text%3E%3C/svg%3E" alt="Preview" class="img-thumbnail" style="width:120px;height:90px;object-fit:cover;" />
+                </div>
+
+                <button id="btnGuardar" class="btn btn-rose w-100">
+                    💾 Guardar Producto
+                </button>
+            </div>
+
+            <!-- EDIT PANEL (hidden by default) -->
+            <div id="panelEditar" class="producto-card d-none">
+                <h4 class="text-rose mb-3">Editar Producto</h4>
+
+                <input type="hidden" id="editId" />
+                <input type="hidden" id="editImagenData" />
+
+                <input class="form-control mb-3" id="editNombre" placeholder="Nombre del producto" />
+                <input class="form-control mb-3" id="editDescripcion" placeholder="Descripción" />
+                <input class="form-control mb-3" id="editPrecio" type="number" placeholder="Precio" />
+
+                <label class="form-label small">Cambiar imagen (opcional)</label>
+                <input class="form-control mb-2" id="editImagen" type="file" accept="image/*" />
+                <div class="mb-3">
+                    <img id="editPreviewImage" src="data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='120'%20height='90'%20viewBox='0%200%20120%2090'%3E%3Crect%20width='120'%20height='90'%20fill='%23f8f9fa'/%3E%3Ctext%20x='50%25'%20y='50%25'%20dominant-baseline='middle'%20text-anchor='middle'%20fill='%23adb5bd'%20font-size='10'%3ENo%20image%3C/text%3E%3C/svg%3E" alt="Preview" class="img-thumbnail" style="width:120px;height:90px;object-fit:cover;" />
+                </div>
+
+                <div class="d-grid gap-2">
+                    <button id="btnActualizar" class="btn btn-rose">
+                        💗 Actualizar
+                    </button>
+                    <button id="btnCancelarEdit" class="btn btn-outline-rose">
+                        Cancelar
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 🩷 COLUMNA DERECHA: LISTA -->
+        <div class="col-lg-8">
+
+            <!-- Buscar -->
+            <div class="producto-card mb-4">
+                <input id="txtBuscar" class="form-control mb-2" placeholder="Buscar producto..." />
+                <button id="btnBuscar" class="btn btn-outline-rose w-100">
+                    🔍 Buscar
+                </button>
+            </div>
+
+            <!-- Tabla -->
+            <div class="producto-card">
+                <table class="table align-middle" id="tablaProductos">
+                    <thead>
+                        <tr class="text-rose">
+                            <th style="width:80px;">Imagen</th>
+                            <th>Nombre</th>
+                            <th>Precio</th>
+                            <th style="width: 160px;">Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+<script type="module" src="@(Url.Content("~/js/productos/main.js"))"></script>

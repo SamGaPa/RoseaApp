@@ -1,0 +1,115 @@
+﻿@{
+    ViewData["Title"] = "Inicio";
+}
+
+<div class="container-fluid p-0">
+
+    <!-- 🌸 Bienvenida -->
+ 
+    <div class="home-hero">
+        <h1>Bienvenida a Rosea</h1>
+        <p>Productos de skincare pensados para cuidar tu piel con amor 💗</p>
+    </div>
+
+    <!-- Tarjetas de productos -->
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+
+        <!-- Producto 1 -->
+        <div class="col">
+            <div class="producto-card h-100">
+                <img src="https://via.placeholder.com/300x200"
+                     class="producto-img"
+                     alt="Crema hidratante">
+
+                <h5 class="producto-nombre">Crema Hidratante</h5>
+
+                <p class="producto-descripcion">
+                    Hidratación profunda para todo tipo de piel.
+                </p>
+
+                <p class="producto-precio">
+                    $250 MXN
+                </p>
+
+                <!-- Cantidad -->
+                <div class="cantidad-control">
+                    <button class="btn-cantidad" onclick="disminuir(this)">−</button>
+                    <input type="text" value="1" />
+                    <button class="btn-cantidad" onclick="aumentar(this)">+</button>
+                </div>
+
+                <!-- Botón carrito -->
+                <button class="btn-carrito">
+                    🛒 Agregar al carrito
+                </button>
+            </div>
+        </div>
+
+        <!-- Producto 2 -->
+        <div class="col">
+            <div class="producto-card h-100">
+                <img src="https://via.placeholder.com/300x200"
+                     class="producto-img"
+                     alt="Serum facial">
+
+                <h5 class="producto-nombre">Sérum Facial</h5>
+
+                <p class="producto-descripcion">
+                    Ilumina y revitaliza tu piel diariamente.
+                </p>
+
+                <p class="producto-precio">
+                    $320 MXN
+                </p>
+
+                <div class="cantidad-control">
+                    <button class="btn-cantidad" onclick="disminuir(this)">−</button>
+                    <input type="text" value="1" />
+                    <button class="btn-cantidad" onclick="aumentar(this)">+</button>
+                </div>
+
+                <button class="btn-carrito">
+                    🛒 Agregar al carrito
+                </button>
+            </div>
+        </div>
+
+        <!-- Producto 3 -->
+        <div class="col">
+            <div class="producto-card h-100">
+                <img src="https://via.placeholder.com/300x200"
+                     class="producto-img"
+                     alt="Limpiador facial">
+
+                <h5 class="producto-nombre">Limpiador Facial</h5>
+
+                <p class="producto-descripcion">
+                    Limpieza suave sin resecar la piel.
+                </p>
+
+                <p class="producto-precio">
+                    $180 MXN
+                </p>
+
+                <div class="cantidad-control">
+                    <button class="btn-cantidad" onclick="disminuir(this)">−</button>
+                    <input type="text" value="1" />
+                    <button class="btn-cantidad" onclick="aumentar(this)">+</button>
+                </div>
+
+                <button class="btn-carrito">
+                    🛒 Agregar al carrito
+                </button>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Botón catálogo -->
+    <div class="text-center mt-5">
+        <a class="btn btn-rose btn-lg" asp-controller="Store" asp-action="Index">
+            Explorar catálogo
+        </a>
+    </div>
+
+</div>

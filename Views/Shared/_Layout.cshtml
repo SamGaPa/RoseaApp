@@ -1,0 +1,288 @@
+﻿
+@using Microsoft.AspNetCore.Http
+@inject IHttpContextAccessor HttpContextAccessor
+
+@{
+    var rol = HttpContextAccessor.HttpContext.Session.GetString("Rol");
+    var usuario = HttpContextAccessor.HttpContext.Session.GetString("Usuario");
+}
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <title>Rosea Skincare</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="~/css/rosea.css" asp-append-version="true" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body class="d-flex flex-column min-vh-100">
+
+    <!-- 🌸 NAVBAR -->
+    <nav class="navbar navbar-expand-lg navbar-glass fixed-top">
+        <div class="container">
+
+            @if (rol == "ADMIN")
+            {
+                <li class="nav-item">
+                    <a class="nav-link fw-semibold"
+                       asp-controller="Admin"
+                       asp-action="Index">
+                        Panel Admin
+                    </a>
+                </li>
+            }
+
+            <a class="navbar-brand fw-bold fs-4 text-rose" asp-controller="Store" asp-action="Index">
+                🌸 Rosea
+            </a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuRosea">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="menuRosea">
+
+                <!-- MENU -->
+                <ul class="navbar-nav me-auto">
+
+                    @if (rol == "ADMIN")
+                    {
+                        <!-- MENU ADMIN -->
+
+                        <li class="nav-item">
+                            <a class="nav-link fw-semibold text-danger"
+                               asp-controller="Producto"
+                               asp-action="Index">
+                                ⚙️ Admin Productos
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link fw-semibold text-danger"
+                               asp-controller="Pedidos"
+                               asp-action="Index">
+                                📦 Admin Pedidos
+                            </a>
+                        </li>
+
+                      
+                    }
+                     @if (rol == "USER")
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link fw-semibold text-danger"
+                               asp-controller="Lista"
+                               asp-action="Index">
+                                📦 Mis Pedidos
+                            </a>
+                        </li>
+                    }
+                    else
+                    {
+                       
+
+                        <li class="nav-item">
+                            <a class="nav-link"
+                            asp-controller="Nosotros"
+                            asp-action="Index">
+                                Nosotros
+                            </a>
+                        </li>
+
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle"
+                            data-bs-toggle="dropdown">
+                                Catálogo
+                            </a>
+
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a class="dropdown-item"
+                                    asp-controller="Store"
+                                    asp-action="Index">
+                                        Todos
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a class="dropdown-item"
+                                    asp-controller="Store"
+                                    asp-action="Categoria"
+                                    asp-route-nombre="Cremas">
+                                        Cremas
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a class="dropdown-item"
+                                    asp-controller="Store"
+                                    asp-action="Categoria"
+                                    asp-route-nombre="Sérums">
+                                        Sérums
+                                    </a>
+                                </li>
+
+                            </ul>
+                        </li>
+                    }
+
+                </ul>
+
+                <li class="nav-item ms-3">
+                    <a class="nav-link position-relative" href="#" onclick="abrirCarrito()">
+
+                        🛒
+
+                        <span id="contadorCarrito"
+                              class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                            0
+                        </span>
+
+                    </a>
+                </li>
+
+                <!-- SEARCH -->
+                <form class="d-flex me-3" method="get" asp-controller="Catalogo" asp-action="Buscar">
+                    <input class="form-control form-control-sm" name="texto" placeholder="Buscar...">
+                    <button class="btn btn-rose btn-sm ms-2">Buscar</button>
+                </form>
+
+                <!-- BOTÓN BUSQUEDA AVANZADA -->
+                <button class="btn btn-outline-rose btn-sm ms-2"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#panelAvanzado">
+                    <i class="bi bi-funnel"></i>
+                </button>
+
+                <!-- USUARIO -->
+                <ul class="navbar-nav ms-3">
+                    <li class="nav-item dropdown">
+
+                        <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+                            <i class="bi bi-person"></i>
+                        </a>
+
+                        <ul class="dropdown-menu dropdown-menu-end">
+
+                            @if (usuario == null)
+                            {
+                                <li>
+                                    <a class="dropdown-item"
+                                       asp-controller="Account"
+                                       asp-action="Login">
+                                        Iniciar Sesión
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a class="dropdown-item"
+                                       asp-controller="Account"
+                                       asp-action="Register">
+                                        Registrarse
+                                    </a>
+                                </li>
+                            }
+                            else
+                            {
+                                <li class="dropdown-item text-muted">
+                                    Hola @usuario
+                                </li>
+
+                                <li>
+                                    <a class="dropdown-item text-danger"
+                                       asp-controller="Account"
+                                       asp-action="AccountSettings">
+                                        Configuracion
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a class="dropdown-item text-danger"
+                                       asp-controller="Account"
+                                       asp-action="Logout">
+                                        Cerrar Sesión
+                                    </a>
+                                </li>
+                            }
+
+                        </ul>
+
+                    </li>
+                </ul>
+
+            </div>
+        </div>
+    </nav>
+
+    <!-- 🌸 PANEL BUSQUEDA AVANZADA (FUERA DEL NAV) -->
+    <div id="panelAvanzado" class="collapse advanced-panel shadow">
+        <div class="container py-3">
+            <form method="post" asp-controller="Catalogo" asp-action="BusquedaAvanzada">
+
+                <h6 class="fw-bold text-rose mb-3">Búsqueda avanzada</h6>
+
+                <input name="Nombre" class="form-control mb-2" placeholder="Nombre del producto">
+                <input name="PrecioMin" type="number" step="0.01" class="form-control mb-2" placeholder="Precio mínimo">
+                <input name="PrecioMax" type="number" step="0.01" class="form-control mb-2" placeholder="Precio máximo">
+                <input name="Ingrediente" class="form-control mb-3" placeholder="Ingrediente clave">
+
+                <button class="btn btn-rose btn-sm w-100">Buscar</button>
+
+            </form>
+        </div>
+    </div>
+
+    <!-- 🌸 CONTENIDO -->
+    <main>
+        @RenderBody()
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer-premium mt-auto">
+        <div class="container text-center">
+            <h5 class="fw-bold text-rose">Rosea Skincare</h5>
+            <p class="small text-muted">Aguascalientes · contacto@rosea.com</p>
+            <p class="small text-muted mt-3">© 2026 Rosea</p>
+        </div>
+    </footer>
+
+    <!-- JQUERY -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+    <!-- VALIDACION -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/4.0.0/jquery.validate.unobtrusive.min.js"></script>
+
+    <!-- BOOTSTRAP -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- JS DEL PROYECTO -->
+
+  
+    <script>
+        window.__isAuthenticated = '@(Context.Session.GetString("Usuario") != null)';
+    </script>
+    
+    <script src="~/js/logging.js"></script>
+    @if (TempData["ErrorAdmin"] != null)
+    {
+        <div class="toast-container position-fixed bottom-0 end-0 p-3">
+            <div class="toast show bg-danger text-white">
+                <div class="toast-body">
+                    @TempData["ErrorAdmin"]
+                </div>
+            </div>
+        </div>
+    }
+
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

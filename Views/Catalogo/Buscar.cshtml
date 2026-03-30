@@ -1,0 +1,26 @@
+﻿@model List<ProductoViewModel>
+
+<h3>Resultados de búsqueda</h3>
+
+@if (!Model.Any())
+{
+    <p>No se encontraron productos.</p>
+}
+else
+{
+    <div class="row">
+        @foreach (var producto in Model)
+        {
+            <div class="col-md-4 mb-3">
+                <div class="card">
+                    <div class="card-body">
+                        <h5>@producto.Nombre</h5>
+                        <p>@producto.Descripcion</p>
+                        <strong>$@producto.Precio</strong>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+}
+

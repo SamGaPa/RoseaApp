@@ -1,0 +1,110 @@
+﻿@{
+    ViewData["Title"] = "Catálogo de tienda";
+}
+
+<!-- 🌷 TOAST ROSEA -->
+<div class="toast-container position-fixed bottom-0 end-0 p-4">
+    <div id="roseToast" class="toast align-items-center border-0" role="alert">
+        <div class="d-flex">
+            <div class="toast-body text-rose fw-semibold">
+                Mensaje aquí
+            </div>
+            <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast"></button>
+        </div>
+    </div>
+</div>
+
+<style>
+    /* Make carousel controls clearly visible and keep cards aligned.
+       Small responsive tweak: on xs show 1 per slide, md+ show 3 per slide (implemented in ui.js grouping). */
+    #storeCarousel .carousel-control-prev,
+    #storeCarousel .carousel-control-next {
+        width: 3.2rem;
+        height: 3.2rem;
+        background: rgba(255, 255, 255, 0.95);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--bs-pink); /* fallback to accent color if available */
+        border: 1px solid rgba(0,0,0,0.06);
+        box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+    }
+
+    /* Slight spacing for the indicators to avoid overlap */
+    #storeCarousel .carousel-indicators {
+        position: static;
+        margin-top: 0.75rem;
+    }
+
+    #storeCarousel .card.h-100 { height: 100%; }
+
+    /* grid area spacing */
+    #GridProductos .card { min-height: 100%; }
+</style>
+
+<div class="container mt-5">
+    <div class="row">
+        <!-- full-width column for carousel + grid -->
+        <div class="col-lg-12">
+            <!-- Buscar -->
+            <div class="producto-card mb-4">
+                <input id="txtBuscar" class="form-control mb-2" placeholder="Buscar producto..." />
+                <button id="btnBuscar" class="btn btn-outline-rose w-100 btn magnetic">
+                    🔍 Buscar
+                </button>
+            </div>
+
+            <!-- Carrusel   class="hero-parallax" -->
+            <div class="producto-card mb-4 hero-parallax">
+                <div id="CarrouselProductos"></div>
+            </div>
+
+            <!-- Grid (all products displayed in rows of 4) -->
+            <div class="producto-card">
+                <h5 class="mb-3">Todos los productos</h5>
+                <div id="GridProductos" class="row gy-3">
+                    <!-- JS will render product cards here using ui.renderGrid -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="module" src="~/js/store/main.js"></script>
+<script>
+    const hero = document.querySelector(".hero-parallax"); 
+
+    document.addEventListener("mousemove", (e) => {
+
+        const x = (e.clientX / window.innerWidth - 0.5) * 20;
+        const y = (e.clientY / window.innerHeight - 0.5) * 20;
+
+        hero.style.transform = `translate(${x}px, ${y}px)`;
+
+    });</script>
+
+<script>
+         document.querySelectorAll(".magnetic").forEach(btn => {
+
+        btn.addEventListener("mousemove", (e) => {
+
+            const rect = btn.getBoundingClientRect();
+
+            const x = e.clientX - rect.left - rect.width / 2;
+            const y = e.clientY - rect.top - rect.height / 2;
+
+            btn.style.transform = `translate(${x * 0.2}px, ${y * 0.2}px)`;
+
+        });
+
+        btn.addEventListener("mouseleave", () => {
+            btn.style.transform = "translate(0,0)";
+        });
+
+    });
+
+   </script>
+
+
+

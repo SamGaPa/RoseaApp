@@ -1,0 +1,85 @@
+﻿@{
+    ViewData["Title"] = "Registro";
+}
+
+<div class="container-fluid d-flex justify-content-center align-items-center"
+     style="min-height:85vh; background-color:#fff0f5;">
+
+    <div class="card shadow-lg border-0"
+         style="max-width:480px; width:100%; border-radius:20px;">
+
+        <div class="card-body p-4">
+
+            <h2 class="text-center fw-bold mb-1" style="color:#d63384;">
+                🌸 Crear cuenta Rosea
+            </h2>
+            <p class="text-center text-muted mb-4">
+                Regístrate y comienza tu rutina de skincare
+            </p>
+
+            <!-- Usuario -->
+            <div class="mb-3">
+                <label class="form-label">Usuario</label>
+                <div class="input-group">
+                    <span class="input-group-text bg-white">
+                        <i class="bi bi-person-heart" style="color:#d63384;"></i>
+                    </span>
+                    <input type="text" class="form-control" placeholder="Nombre de usuario">
+                </div>
+            </div>
+
+            <!-- Correo -->
+            <div class="mb-3">
+                <label class="form-label">Correo electrónico</label>
+                <div class="input-group">
+                    <span class="input-group-text bg-white">
+                        <i class="bi bi-envelope-heart" style="color:#d63384;"></i>
+                    </span>
+                    <input type="email" class="form-control" placeholder="correo@ejemplo.com">
+                </div>
+            </div>
+
+            <!-- Contraseña -->
+            <div class="mb-3">
+                <label class="form-label">Contraseña</label>
+                <div class="input-group">
+                    <span class="input-group-text bg-white">
+                        <i class="bi bi-lock-heart" style="color:#d63384;"></i>
+                    </span>
+                    <input type="password" class="form-control" placeholder="********">
+                </div>
+            </div>
+
+            <!-- Confirmar -->
+            <div class="mb-3">
+                <label class="form-label">Confirmar contraseña</label>
+                <div class="input-group">
+                    <span class="input-group-text bg-white">
+                        <i class="bi bi-lock-fill" style="color:#d63384;"></i>
+                    </span>
+                    <input type="password" class="form-control" placeholder="********">
+                </div>
+            </div>
+
+            <!-- Botón -->
+            <div class="d-grid mt-4">
+                <button class="btn btn-lg"
+                        style="background-color:#d63384; color:white; border-radius:25px;">
+                    Registrarme
+                </button>
+            </div>
+
+            <!-- Volver -->
+            <div class="text-center mt-4">
+                <span class="text-muted">¿Ya tienes cuenta?</span>
+                <a asp-controller="Account" asp-action="Login"
+                   class="text-decoration-none"
+                   style="color:#d63384;">
+                    Inicia sesión
+                </a>
+            </div>
+
+        </div>
+    </div>
+</div>
+

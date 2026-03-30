@@ -1,0 +1,183 @@
+﻿
+@{
+    ViewData["Title"] = "Settings";
+}
+
+
+
+<div class="auth-page">
+
+
+    <div class="container d-flex justify-content-center align-items-center mt-5">
+
+        <div class="card shadow-lg border-0" style="max-width: 500px; width: 100%; border-radius: 16px;">
+
+            <div class="card-body p-4">
+                <h2 class="text-center brand-title text-rose">
+                    🌸 Rosea
+                </h2>
+                <!-- HEADER -->
+                <h4 class="text-center mb-1 text-rose">🔐 Inicio de sesión y seguridad</h4>
+                <p class="text-center text-muted mb-4 text-rose">
+                    Administra tu información de acceso
+                </p>
+
+                <form id="accountSettingsForm">
+
+                    <!-- EMAIL -->
+                    <div class="mb-3">
+                        <label class="nav-link fw-semibold text-danger">Correo electrónico</label>
+                        <input id="UserMail" type="text"
+                               class="form-control"
+                               value="@User.Identity.Name"
+                               disabled />
+                    </div>
+
+                    <hr />
+
+                    <!-- PASSWORD SECTION -->
+                    <h6 class="mb-3 text-muted">Cambiar contraseña</h6>
+
+                    <div class="mb-3">
+                        <label class="form-label">Password actual</label>
+                        <input id="passwordCurrent"
+                               type="password"
+                               class="form-control"
+                               placeholder="********" />
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Nuevo password</label>
+                        <input id="passwordNew"
+                               type="password"
+                               class="form-control"
+                               placeholder="********" />
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Confirmar password</label>
+                        <input id="passwordConfirm"
+                               type="password"
+                               class="form-control"
+                               placeholder="********" />
+                    </div>
+
+                    <hr />
+
+                    <!-- 2FA -->
+                    <div class="form-check form-switch mb-4">
+                        <input class="form-check-input"
+                               type="checkbox"
+                               id="enable2FA" />
+
+                        <label id="mfaStatus" class="form-check-label" for="enable2FA">
+                            Activar autenticación de dos factores
+                        </label>
+                        <p id="mfaStatus2"
+                           class="text-center text-success fw-semibold"></p>
+                    </div>
+
+                    <!-- BUTTON -->
+                    <div class="d-grid">
+                        <button type="submit" class="btn btn-rose btn-lg">
+                            Cambiar Password
+                        </button>
+                    </div>
+
+                    <div id="disableMfaSection" style="display:none">
+
+                        <hr />
+
+                        <p class="text-center text-danger">
+                            Ingrese código para desactivar MFA
+                        </p>
+
+                        <input id="disableCode"
+                               class="form-control text-center"
+                               placeholder="123456" />
+
+                        <button id="btnDisableMfa"
+                                class="btn btn-danger w-100 mt-3">
+
+                            Desactivar
+
+                        </button>
+
+                    </div>
+
+                    <div id="mfaSetupSection" class="mt-4" style="display:none">
+
+                        <hr />
+
+                        <h6 class="text-center">Configurar autenticación de dos factores</h6>
+
+                        <p class="text-muted text-center">
+                            Escanea este código con Google Authenticator
+                        </p>
+
+                        <div class="d-flex justify-content-center mb-3">
+                            <div id="qrcode"></div>
+                        </div>
+
+                        <p class="text-center small text-muted">
+                            Si no puedes escanear el QR usa este código:
+                        </p>
+
+                        <p id="mfaSecret"
+                           class="text-center fw-bold"></p>
+
+                        <input id="mfaCode"
+                               class="form-control text-center"
+                               placeholder="Ingrese código de 6 dígitos" />
+
+                        <button id="btnVerifyMfa"
+                                type="button"
+                                class="btn btn-rose w-100 mt-3">
+
+                            Verificar y activar
+
+                        </button>
+
+                    </div>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+
+@* <script src="https://www.google.com/recaptcha/api.js" async defer></script> *@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<script type="module" src="~/js/AccountSettings/main.js"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+              const pwd = document.querySelector("#password");
+      const warning = document.getElementById("capsWarning");
+      if (!pwd || !warning) return;
+
+      pwd.addEventListener("keyup", function (e) {
+        if (typeof e.getModifierState === "function") {
+          const caps = e.getModifierState("CapsLock");
+          warning.classList.toggle("d-none", !caps);
+        } else {
+          // Fallback for environments without getModifierState: hide warning
+          warning.classList.add("d-none");
+        }
+      });
+    });
+</script>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
+
+
+<!-- recaptcha -->
+@*     <div class="mb-3 text-center">
+                    <div class="g-recaptcha"
+                         data-sitekey="6LfqqWcsAAAAAEFcOix556xAlCUwA45WtHiOJekb"></div>
+                </div> *@
