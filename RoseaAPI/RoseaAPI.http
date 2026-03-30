@@ -1,0 +1,6 @@
+@RoseaAPI_HostAddress = http://localhost:5223
+
+GET {{RoseaAPI_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
