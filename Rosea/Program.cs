@@ -8,6 +8,11 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
+
+using Microsoft.AspNetCore.Localization;
+using System.Globalization;
+
+
 using System;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -26,6 +31,12 @@ Log.Logger = new LoggerConfiguration()
 builder.Host.UseSerilog();
 
 // ================= SERVICIOS =================
+
+builder.Services.AddLocalization(options => options.ResourcesPath = "Resources");
+
+builder.Services.AddControllersWithViews()
+    .AddViewLocalization();
+
 
 // HTTP Client para API
 builder.Services.AddHttpClient<ProductoService>();
@@ -117,6 +128,21 @@ app.UseAuthorization();    // 3️⃣ Roles
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Store}/{action=Index}/{id?}");
+
+
+var supportedCultures = new[]
+{
+    new CultureInfo("es"),
+    new CultureInfo("en")
+};
+
+app.UseRequestLocalization(new RequestLocalizationOptions
+{
+    DefaultRequestCulture = new RequestCulture("es"),
+    SupportedCultures = supportedCultures,
+    SupportedUICultures = supportedCultures
+});
+
 
 app.Run();
 

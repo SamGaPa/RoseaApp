@@ -24,7 +24,7 @@
 </head>
 
 <body class="d-flex flex-column min-vh-100">
-
+    <div id="google_translate_element"></div>
     <!-- 🌸 NAVBAR -->
     <nav class="navbar navbar-expand-lg navbar-glass fixed-top">
         <div class="container">
@@ -39,7 +39,32 @@
                     </a>
                 </li>
             }
+          
+            <div  class="d-flex gap-2">
+                <button onclick="translateToEnglish()" class="btn btn-outline-rose">
+                    🇺🇸
+                </button>
 
+                <button onclick="translateToSpanish()" class="btn btn-outline-rose">
+                    🇪🇸
+                </button>
+           @*      <a asp-controller="Language"
+                       asp-action="SetLanguage"
+                       asp-route-culture="es"
+                       class="btn btn-outline-rose">
+                    🇪🇸
+                </a>
+
+                <a asp-controller="Language"
+                       asp-action="SetLanguage"
+                       asp-route-culture="en"
+                       class="btn btn-outline-rose">
+                    🇺🇸
+                </a> *@
+
+            </div>
+
+            <button id="themeToggle" class="btn btn-outline-rose">🌙</button>
             <a class="navbar-brand fw-bold fs-4 text-rose" asp-controller="Store" asp-action="Index">
                 🌸 Rosea
             </a>
@@ -270,7 +295,82 @@
     <script>
         window.__isAuthenticated = '@(Context.Session.GetString("Usuario") != null)';
     </script>
-    
+
+      
+    <script>
+        const toggle = document.getElementById("themeToggle");
+
+        toggle.addEventListener("click", () => {
+
+        document.body.classList.toggle("dark-mode");
+
+        if(document.body.classList.contains("dark-mode")){
+        localStorage.setItem("theme","dark");
+        } else {
+        localStorage.setItem("theme","light");
+        }
+
+        });
+
+        window.addEventListener("load", () => {
+
+        const theme = localStorage.getItem("theme");
+
+        if(theme === "dark"){
+        document.body.classList.add("dark-mode");
+        }
+
+        });
+    </script>
+
+    <script type="text/javascript">
+
+        // function googleTranslateElementInit() {
+        // new google.translate.TranslateElement(
+        // {
+        // pageLanguage: 'es',
+        // includedLanguages: 'en,es',
+        // layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+        // },
+        // 'google_translate_element'
+        // );
+        // }
+
+        function googleTranslateElementInit() {
+        new google.translate.TranslateElement(
+        {
+        pageLanguage: 'es',
+        includedLanguages: 'en,es',
+        autoDisplay: false
+        },
+        'google_translate_element'
+        );
+        }
+
+
+        function translatePage(lang) {
+
+        const select = document.querySelector(".goog-te-combo");
+
+        if (select) {
+        select.value = lang;
+        select.dispatchEvent(new Event("change"));
+        }
+
+        }
+
+        function translateToEnglish(){
+        translatePage("en");
+        }
+
+        function translateToSpanish(){
+        translatePage("es");
+        }
+
+    </script>
+
+    <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
     <script src="~/js/logging.js"></script>
     @if (TempData["ErrorAdmin"] != null)
     {

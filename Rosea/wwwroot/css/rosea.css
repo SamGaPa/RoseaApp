@@ -2,46 +2,113 @@
    🌸 ROSEA DESIGN SYSTEM
 ========================= */
 
+/* LIGHT MODE (default) */
 :root {
-    
     --rose-primary: #d63384;
     --rose-secondary: #f8c8dc;
     --rose-soft: #fff4f8;
     --rose-light: #fdeaf1;
     --rose-dark: #b02363;
-    --rose-pastel: #f9d6e5; 
-
-    --text-dark: #3a3a3a;
+    --rose-pastel: #f9d6e5;
+    --text-main: #3a3a3a;
     --text-light: #777;
-    --white: #ffffff;
+    --surface: #ffffff;
+    --surface-soft: #fff4f8;
+    --surface-card: #ffffff;
+    --border-soft: rgba(0,0,0,0.05);
     --shadow-soft: 0 8px 20px rgba(214, 51, 132, 0.08);
     --shadow-hover: 0 12px 25px rgba(214, 51, 132, 0.15);
     --radius-lg: 20px;
     --radius-md: 12px;
+    --gradient-body: linear-gradient( 180deg, #fff4f8 0%, #ffffff 50% );
 }
+
+/* =========================
+   🌙 DARK MODE
+========================= */
+
+.dark-mode {
+    --rose-primary: #ff6fae;
+    --rose-secondary: #ffc2dc;
+    --rose-dark: #ff4f9a;
+    --rose-pastel: #ffd6ea;
+    --rose-soft: #2b2b31;
+    --rose-light: #34343c;
+    --surface: #34343c;
+    --surface-soft: #40404a;
+    --surface-supersoft: #727281;
+    --surface-card: #3a3a44;
+    --text-main: #f2f2f4;
+    --text-light: #c8c8cf;
+    --border-soft: rgba(255,255,255,0.08);
+    --shadow-soft: 0 8px 25px rgba(0,0,0,0.35);
+    --shadow-hover: 0 15px 35px rgba(0,0,0,0.45);
+    --gradient-body: linear-gradient( 180deg, #2b2b31 0%, #32323a 70% );
+}
+
+
+
+
+    .dark-mode .navbar-brand {
+        color: var(--rose-primary) !important;
+    }
+
+    .dark-mode .nav-link {
+        color: var(--rose-primary) !important;
+    }
+
+    .dark-mode .card-body {
+        background-color: var(--surface-supersoft);
+    }
+
+    .dark-mode .text-muted {
+        color: var(--text-main) !important;
+    }
+
+    .dark-mode .producto-descripcion {
+        font-size: 14px;
+        color: var(--text-main);
+        min-height: 50px;
+    }
+
+
+
+    .dark-mode .navbar-toggler {
+        border-color: rgba(255,255,255,0.2);
+    }
+
+    .dark-mode .navbar-toggler-icon {
+        filter: invert(1);
+    }
+
+    .dark-mode #themeToggle {
+        border-color: var(--rose-primary);
+        color: var(--rose-primary);
+    }
+
 /* =========================
    BASE GENERAL
 ========================= */
+
 body {
     font-family: 'Poppins', sans-serif;
-    padding-top: 80px; /* altura real del navbar */
-    background: linear-gradient( 180deg, var(--rose-soft) 0%, #ffffff 50% );
-    color: var(--rose-pastel);
-    margin-top: 0;
-    padding-top: 70px;
-}
-main {
-    padding-top: 0;
+    padding-top: 80px;
+    background: var(--gradient-body);
+    color: var(--text-main);
     margin-top: 0;
 }
 
 /* =========================
-   TEXTOS Y BOTONES
+   TEXTOS
 ========================= */
 
 .text-rose {
     color: var(--rose-primary) !important;
 }
+
+/* =========================
+   BOTONES
+========================= */
 
 .btn-rose {
     background-color: var(--rose-primary);
@@ -49,7 +116,7 @@ main {
     border-radius: 30px;
     padding: 10px 25px;
     border: none;
-    transition: all 0.3s ease;
+    transition: all .3s ease;
 }
 
     .btn-rose:hover {
@@ -61,7 +128,7 @@ main {
     border: 1px solid var(--rose-primary);
     color: var(--rose-primary);
     border-radius: 20px;
-    transition: all 0.3s ease;
+    transition: all .3s ease;
 }
 
     .btn-outline-rose:hover {
@@ -69,27 +136,18 @@ main {
         color: white;
     }
 
+/* =========================
+   HERO
+========================= */
 
-..hero-section {
-    padding: 40px 0 30px 0; /* Mucho más compacto */
-    background: linear-gradient(135deg, var(--rose-soft), #fff);
-    border-bottom: 1px solid rgba(0,0,0,0.05);
-        margin-top: -1px;
-    }
+.hero-section {
+    padding: 40px 0 30px 0;
+    background: linear-gradient( 135deg, var(--rose-soft), var(--surface) );
+    border-bottom: 1px solid var(--border-soft);
 }
 
-.hero-section h1 {
-    font-size: 1.8rem;
-    margin-bottom: 0.5rem;
-
-}
-
-.hero-section p {
-    margin-bottom: 0;
-}
 .home-hero {
-    margin-top: 0;
-    background: linear-gradient(135deg, var(--rose-light), var(--rose-secondary));
+    background: linear-gradient( 135deg, var(--rose-light), var(--rose-secondary) );
     padding: 10px 20px;
     border-radius: 0 0 50px 60px;
     text-align: center;
@@ -97,20 +155,22 @@ main {
     color: var(--rose-primary);
 }
 
-    .home-hero h1 {
-        color: var(--rose-primary);
-        font-weight: 600;
-        margin-top: 0;
-    }
-
     .home-hero p {
         color: var(--text-light);
     }
+
 /* =========================
-   🌸 PRODUCT CARD
+   PRODUCT CARD
 ========================= */
 
-
+.producto-card {
+    background-color: var(--surface-card);
+    padding: 20px;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-soft);
+    border: 1px solid var(--border-soft);
+    transition: transform .3s ease, box-shadow .3s ease;
+}
 
     .producto-card:hover {
         transform: translateY(-6px);
@@ -144,7 +204,7 @@ main {
 }
 
 /* =========================
-   🌸 QUANTITY CONTROL
+   QUANTITY CONTROL
 ========================= */
 
 .cantidad-control {
@@ -163,7 +223,7 @@ main {
     border-radius: 50%;
     font-weight: bold;
     cursor: pointer;
-    transition: 0.2s ease;
+    transition: .2s ease;
 }
 
     .btn-cantidad:hover {
@@ -177,39 +237,14 @@ main {
     border: 1px solid var(--rose-secondary);
     border-radius: 8px;
     margin: 0 10px;
+    background: var(--surface);
+    color: var(--text-main);
 }
 
-.valor-card,
-.producto-card {
-    background-color: #ffffff;
-    padding: 20px;
-    border-radius: 20px;
-    box-shadow: 0 8px 20px rgba(214, 51, 132, 0.08);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
+/* =========================
+   TABLES
+========================= */
 
-    .valor-card:hover,
-    .producto-card:hover {
-        transform: translateY(-6px);
-        box-shadow: 0 12px 25px rgba(214, 51, 132, 0.15);
-    }
-.footer-premium {
-    background: linear-gradient(135deg, var(--rose-soft), #ffffff);
-    padding: 50px 0;
-    margin-top: 80px;
-}
-.container {
-    position: relative;
-    z-index: 2;
-}
-
-
-* {
-    box-sizing: border-box;
-}
-button {
-    font-family: inherit;
-}
 .table thead {
     border-bottom: 2px solid var(--rose-secondary);
 }
@@ -218,113 +253,93 @@ button {
     background-color: var(--rose-soft);
 }
 
+/* =========================
+   MODALS
+========================= */
+
 .modal-content {
     border-radius: var(--radius-lg);
     box-shadow: var(--shadow-hover);
-}
-#tablaProductos td {
-    vertical-align: middle;
-}
-.toast {
-    background: var(--rose-soft);
-    border-radius: var(--radius-md);
-    box-shadow: var(--shadow-hover);
-}
-/* 🌷 Animación aparición */
-.fade-in {
-    animation: fadeIn 0.4s ease forwards;
+    background: var(--surface);
+    color: var(--text-main);
 }
 
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(8px);
-    }
+/* =========================
+   FOOTER
+========================= */
 
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+.footer-premium {
+    background: linear-gradient( 135deg, var(--rose-soft), var(--surface) );
+    padding: 50px 0;
+    margin-top: 80px;
 }
 
-/* 🌷 Animación eliminación */
-.fade-out {
-    animation: fadeOut 0.3s ease forwards;
-}
+/* =========================
+   NAVBAR
+========================= */
 
-@keyframes fadeOut {
-    to {
-        opacity: 0;
-        transform: translateX(20px);
-    }
-}
 .navbar-glass {
-    background: rgba(255, 255, 255, 0.75);
+    background: rgba(255,255,255,0.75);
     backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border-bottom: 1px solid rgba(0,0,0,0.05);
-    transition: all 0.3s ease;
-}
-.advanced-panel {
-    position: fixed;
-    top: 75px; /* misma altura que el navbar */
-    left: 0;
-    right: 0;
-    z-index: 1030;
-    background: white;
-    padding: 20px;
-}
-.admin-card {
-    border-radius: 20px;
-    transition: all 0.25s ease;
+    border-bottom: 1px solid var(--border-soft);
+    transition: all .3s ease;
 }
 
-    .admin-card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-    }
-.nav-link.text-danger {
-    font-weight: 600;
+/* Dark navbar fix */
+
+.dark-mode .navbar-glass {
+    background: rgba(24,24,28,0.75);
 }
 
-    .nav-link.text-danger:hover {
-        color: #b02a6f !important;
-    }
-#capsWarning {
-    color: #d63384;
-    font-size: 0.85rem;
-    margin-top: 5px;
-}
+/* =========================
+   ADMIN CARD
+========================= */
+
 .admin-card {
     border-radius: 18px;
     transition: all .25s ease;
+    background: var(--surface);
+    box-shadow: var(--shadow-soft);
 }
 
     .admin-card:hover {
         transform: translateY(-6px);
-        box-shadow: 0 12px 30px rgba(0,0,0,0.12);
+        box-shadow: var(--shadow-hover);
     }
 
-.text-rose {
-    color: #d63384;
+/* =========================
+   TOAST
+========================= */
+
+.toast {
+    background: var(--surface-soft);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-hover);
+    color: var(--text-main);
 }
 
-.btn-rose {
-    background: #d63384;
-    color: white;
-    border: none;
+#google_translate_element {
+    position: absolute;
+    left: -9999px;
+}
+.goog-te-banner-frame.skiptranslate {
+    display: none !important;
 }
 
-    .btn-rose:hover {
-        background: #b02a6f;
-        color: white;
+
+.goog-te-gadget {
+    display: none !important;
+}
+
+.goog-tooltip {
+    display: none !important;
+}
+
+    .goog-tooltip:hover {
+        display: none !important;
     }
 
-.hero-parallax {
-    position: relative;
-    transition: transform 0.2s ease;
-}
-
-.magnetic {
-    transition: transform 0.2s ease;
+.goog-text-highlight {
+    background: none !important;
+    box-shadow: none !important;
 }

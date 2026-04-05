@@ -2,6 +2,8 @@
     ViewData["Title"] = "Catálogo de tienda";
 }
 
+@inject Microsoft.AspNetCore.Mvc.Localization.IViewLocalizer Localizer
+
 <!-- 🌷 TOAST ROSEA -->
 <div class="toast-container position-fixed bottom-0 end-0 p-4">
     <div id="roseToast" class="toast align-items-center border-0" role="alert">
@@ -49,9 +51,9 @@
         <div class="col-lg-12">
             <!-- Buscar -->
             <div class="producto-card mb-4">
-                <input id="txtBuscar" class="form-control mb-2" placeholder="Buscar producto..." />
+                <input id="txtBuscar" class="form-control mb-2" placeholder="@Localizer["SearchPlaceholder"]" />
                 <button id="btnBuscar" class="btn btn-outline-rose w-100 btn magnetic">
-                    🔍 Buscar
+                    🔍  @Localizer["SearchButton"]
                 </button>
             </div>
 
@@ -62,7 +64,7 @@
 
             <!-- Grid (all products displayed in rows of 4) -->
             <div class="producto-card">
-                <h5 class="mb-3">Todos los productos</h5>
+                <h5 class="mb-3"> @Localizer["AllProducts-text"]</h5>
                 <div id="GridProductos" class="row gy-3">
                     <!-- JS will render product cards here using ui.renderGrid -->
                 </div>
