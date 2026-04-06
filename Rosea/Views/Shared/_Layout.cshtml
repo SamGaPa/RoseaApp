@@ -92,7 +92,7 @@
 
                         <li class="nav-item">
                             <a class="nav-link fw-semibold text-danger"
-                               asp-controller="Pedidos"
+                                   asp-controller="AdminPedidos"
                                asp-action="Index">
                                 📦 Admin Pedidos
                             </a>
@@ -112,7 +112,13 @@
                     }
                     else
                     {
-                       
+                        <li class="nav-item">
+                            <a class="nav-link"
+                                   asp-controller="Pedido"
+                                   asp-action="Consultar">
+                                Tu pedido
+                            </a>
+                        </li>
 
                         <li class="nav-item">
                             <a class="nav-link"
@@ -137,6 +143,9 @@
                                     </a>
                                 </li>
 
+
+
+
                                 <li>
                                     <a class="dropdown-item"
                                     asp-controller="Store"
@@ -155,6 +164,8 @@
                                     </a>
                                 </li>
 
+
+
                             </ul>
                         </li>
                     }
@@ -162,7 +173,17 @@
                 </ul>
 
                 <li class="nav-item ms-3">
-                    <a class="nav-link position-relative" href="#" onclick="abrirCarrito()">
+
+                    <a class="dropdown-item"
+                           asp-controller="Cart"
+                           asp-action="Index">
+                        🛒
+                        <span id="contadorCarrito"
+                              class="translate-middle badge rounded-pill bg-danger">
+                            0
+                        </span>
+                    </a>
+               @*      <a class="nav-link position-relative" href="#" onclick="abrirCarrito()">
 
                         🛒
 
@@ -171,7 +192,7 @@
                             0
                         </span>
 
-                    </a>
+                    </a> *@
                 </li>
 
                 <!-- SEARCH -->
@@ -290,7 +311,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
     <!-- JS DEL PROYECTO -->
-
+    <script type="module" src="~/js/cart/cartCounter.js"></script>
   
     <script>
         window.__isAuthenticated = '@(Context.Session.GetString("Usuario") != null)';

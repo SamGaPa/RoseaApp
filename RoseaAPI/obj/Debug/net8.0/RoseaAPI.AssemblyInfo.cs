@@ -15,7 +15,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("RoseaAPI")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a92848c2857c502fe51364c252b8c317289e16d8")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+116bb6ec36bcce571a83a121eb79fd16f24cf522")]
 [assembly: System.Reflection.AssemblyProductAttribute("RoseaAPI")]
 [assembly: System.Reflection.AssemblyTitleAttribute("RoseaAPI")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

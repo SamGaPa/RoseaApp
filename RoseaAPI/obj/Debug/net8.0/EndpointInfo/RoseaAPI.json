@@ -269,6 +269,134 @@
         }
       }
     },
+    "/api/pedidos": {
+      "post": {
+        "tags": [
+          "Pedidos"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PedidoRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PedidoRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/PedidoRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "Pedidos"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/pedidos/{codigo}": {
+      "get": {
+        "tags": [
+          "Pedidos"
+        ],
+        "parameters": [
+          {
+            "name": "codigo",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/pedidos/status/{id}": {
+      "put": {
+        "tags": [
+          "Pedidos"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "string"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "type": "string"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/pedidos/{id}/productos": {
+      "get": {
+        "tags": [
+          "Pedidos"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/Productos/listar": {
       "get": {
         "tags": [
@@ -580,6 +708,65 @@
           },
           "code": {
             "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "PedidoItem": {
+        "type": "object",
+        "properties": {
+          "productoId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "nombre": {
+            "type": "string",
+            "nullable": true
+          },
+          "precio": {
+            "type": "number",
+            "format": "double"
+          },
+          "cantidad": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "PedidoRequest": {
+        "type": "object",
+        "properties": {
+          "nombre": {
+            "type": "string",
+            "nullable": true
+          },
+          "apellidos": {
+            "type": "string",
+            "nullable": true
+          },
+          "telefono": {
+            "type": "string",
+            "nullable": true
+          },
+          "direccion": {
+            "type": "string",
+            "nullable": true
+          },
+          "codigoPostal": {
+            "type": "string",
+            "nullable": true
+          },
+          "comentarios": {
+            "type": "string",
+            "nullable": true
+          },
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PedidoItem"
+            },
             "nullable": true
           }
         },

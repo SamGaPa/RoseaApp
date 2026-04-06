@@ -17,14 +17,37 @@ export function getCart() {
 export function setCart(items) {
     localStorage.setItem(CART_KEY, JSON.stringify(items));
 }
+//export function addToCart(item) {
+//    const items = getCart();
+//    const existing = items.find(i => i.id == item.id);
+//    if (existing) existing.qty = (existing.qty || 1) + (item.qty || 1);
+//    else items.push(Object.assign({ qty: 1 }, item));
+//    setCart(items);
+//    return items;
+//}
+
+
 export function addToCart(item) {
+
     const items = getCart();
+
     const existing = items.find(i => i.id == item.id);
-    if (existing) existing.qty = (existing.qty || 1) + (item.qty || 1);
-    else items.push(Object.assign({ qty: 1 }, item));
+
+    if (existing) {
+
+        existing.qty = (existing.qty || 1) + (item.qty || 1);
+
+    } else {
+
+        items.push(item);
+
+    }
+
     setCart(items);
+
     return items;
 }
+
 export function removeFromCart(id) {
     const items = getCart().filter(i => i.id != id);
     setCart(items);

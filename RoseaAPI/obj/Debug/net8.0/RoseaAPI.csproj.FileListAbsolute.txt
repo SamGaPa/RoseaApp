@@ -304,3 +304,5 @@ C:\Users\Sam\source\repos\RoseaApp\RoseaAPI\obj\Debug\net8.0\RoseaAPI.pdb
 C:\Users\Sam\source\repos\RoseaApp\RoseaAPI\obj\Debug\net8.0\RoseaAPI.genruntimeconfig.cache
 C:\Users\Sam\source\repos\RoseaApp\RoseaAPI\obj\Debug\net8.0\ref\RoseaAPI.dll
 C:\Users\Sam\source\repos\RoseaApp\RoseaAPI\bin\Debug\net8.0\Logs\roseaapi-20260404.json
+C:\Users\Sam\source\repos\RoseaApp\RoseaAPI\bin\Debug\net8.0\Logs\roseaapi-20260405.json
+C:\Users\Sam\source\repos\RoseaApp\RoseaAPI\bin\Debug\net8.0\Logs\roseaapi-20260406.json

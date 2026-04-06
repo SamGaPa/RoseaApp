@@ -82,7 +82,13 @@ export function renderCarousel(productos = []) {
                                 <div class="fw-bold text-rose">${safePrecio}</div>
                                 <div class="fw-bold text-rose"><img src="${imgSrc}" alt="${safeNombre}" class="img-thumbnail" style="width:128px;height:96px;object-fit:cover;" /></div>                                 
                                 <div class="d-flex align-items-center gap-2">
-                                    <button class="btn btn-sm btn-outline-rose agregar" data-id="${p.id}">🛒</button>
+                                    <button class="btn btn-sm btn-outline-rose agregar"
+                                            data-id="${p.id}"
+                                            data-nombre="${safeNombre}"
+                                            data-precio="${safePrecio}"
+                                            data-imagen="${imgSrc}">
+                                        🛒
+                                    </button>
                                     <div class="input-group input-group-sm cantidad-control" style="width:110px;">
                                         <button class="btn btn-outline-secondary btn-cantidad" data-action="dec" data-id="${p.id}">−</button>
                                         <input class="form-control text-center cantidad-input" type="text" value="1" data-id="${p.id}" />

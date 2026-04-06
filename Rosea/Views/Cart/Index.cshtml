@@ -1,0 +1,39 @@
+﻿@{
+    ViewData["Title"] = "Carrito";
+}
+
+<h2 class="mb-4">Mi carrito</h2>
+
+<div id="cartContainer">    
+    <div class="producto-card">
+        <table class="table align-middle" id="tablaProductos">
+            <thead>
+                <tr class="text-rose">
+                    <th hidden="hidden">ID</th>
+                    <th style="width:80px;">Imagen</th>
+                    <th>Nombre</th>
+                    <th>Precio</th>
+                    <th>Cantidad</th>
+                    <th style="width: 160px;">Acciones</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
+</div>
+
+<div class="mt-3 d-flex justify-content-between">
+
+    <button id="btnClearCart" class="btn btn-outline-danger">
+        Vaciar carrito
+    </button>
+
+    <a class="btn btn-success"
+           asp-controller="Cart"
+           asp-action="Checkout">
+        Proceder al pedido
+    </a>
+
+</div>
+
+<script type="module" src="~/js/cart/main.js"></script>
