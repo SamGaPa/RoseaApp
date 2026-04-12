@@ -1,8 +1,8 @@
 ﻿import { getCart, clearCart } from "../storage.js";
 
-//const API = "/api/pedidos";
+const API = "/api/pedidos";
 
-const API = "http://localhost:5223/api/pedidos"; // cambia puerto
+//const API = "http://localhost:5223/api/pedidos"; // cambia puerto
 
 document.getElementById("formPedido")
     .addEventListener("submit", async e => {

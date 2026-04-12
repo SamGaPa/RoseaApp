@@ -343,3 +343,17 @@ body {
     background: none !important;
     box-shadow: none !important;
 }
+.badge-pendiente {
+    background: #ffe5f0;
+    color: #b02363;
+}
+
+.badge-enviado {
+    background: #e6f7ff;
+    color: #0077b6;
+}
+
+.badge-entregado {
+    background: #e8f9f0;
+    color: #2a9d8f;
+}

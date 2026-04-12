@@ -1,7 +1,8 @@
 ﻿//const API = "/api/pedidos";
 
+const API = "/api/pedidos"; // cambia puerto
 
-const API = "http://localhost:5223/api/pedidos"; // cambia puerto
+//const API = "http://localhost:5223/api/pedidos"; // cambia puerto
 
 async function cargar() {
 
@@ -43,7 +44,7 @@ ${p.comentarios ?? ""}
 
 <td>
 
-<button class="btn btn-sm btn-outline-primary ver-productos"
+<button class="btn btn-sm btn-outline-rose ver-productos"
 data-id="${p.idPedido}">
 Ver
 </button>

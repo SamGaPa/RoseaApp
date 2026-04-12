@@ -1,7 +1,8 @@
 ﻿//const API_URL = "https://localhost:7092/api/productos"; // cambia puerto
 //
 /*const API_URL = "http://host.docker.internal:7092/api/productos"; // cambia puerto*/
-const API_URL = "http://localhost:5223/api/productos"; // cambia puerto
+//const API_URL = "http://localhost:5223/api/productos"; // cambia puerto
+const API_URL = "/api/productos"; // cambia puerto
 
 //export async function listarProductos() {
 //    const res = await fetch(API_URL + "/listar");

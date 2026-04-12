@@ -1,6 +1,7 @@
 ﻿//const API = "/api/pedidos";
 import { renderTabla } from "./ui.js";
-const API = "http://localhost:5223/api/pedidos"; // cambia puerto
+//const API = "http://localhost:5223/api/pedidos"; // cambia puerto
+const API = "/api/pedidos"; // cambia puerto
 
 document.getElementById("formConsulta")
     .addEventListener("submit", async e => {
@@ -43,12 +44,7 @@ document.getElementById("formConsulta")
         <div class="col-12 mb-3">
             <label>Direccion: ${responseData.pedido.direccion}</label>
         </div>
-
-        <div class="col-12 mb-3">
-            <label>Comentarios: ${responseData.pedido.comentarios}</label>
-
-        </div>
-
+        
         <div class="col-12 mb-3">
             <label>Comentarios: ${responseData.pedido.comentarios}</label>
 

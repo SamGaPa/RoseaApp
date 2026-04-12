@@ -53,7 +53,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 async function completeLogin(data, email) {
 
-    // guardar JWT en cookie (ya lo hacías)
+    // guardar JWT en cookie
     document.cookie = "jwt=" + data.token + "; path=/";
     sessionStorage.setItem("token", data.token); // opcional, para usar en JS
     // llamar al endpoint para que el servidor cree Session["Usuario"] y ["Rol"]

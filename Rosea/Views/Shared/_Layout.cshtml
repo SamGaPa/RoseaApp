@@ -29,84 +29,60 @@
     <nav class="navbar navbar-expand-lg navbar-glass fixed-top">
         <div class="container">
 
-            @if (rol == "ADMIN")
-            {
-                <li class="nav-item">
-                    <a class="nav-link fw-semibold"
-                       asp-controller="Admin"
-                       asp-action="Index">
-                        Panel Admin
-                    </a>
-                </li>
-            }
-          
-            <div  class="d-flex gap-2">
-                <button onclick="translateToEnglish()" class="btn btn-outline-rose">
-                    🇺🇸
-                </button>
-
-                <button onclick="translateToSpanish()" class="btn btn-outline-rose">
-                    🇪🇸
-                </button>
-           @*      <a asp-controller="Language"
-                       asp-action="SetLanguage"
-                       asp-route-culture="es"
-                       class="btn btn-outline-rose">
-                    🇪🇸
-                </a>
-
-                <a asp-controller="Language"
-                       asp-action="SetLanguage"
-                       asp-route-culture="en"
-                       class="btn btn-outline-rose">
-                    🇺🇸
-                </a> *@
-
-            </div>
-
-            <button id="themeToggle" class="btn btn-outline-rose">🌙</button>
-            <a class="navbar-brand fw-bold fs-4 text-rose" asp-controller="Store" asp-action="Index">
+            <!-- LOGO -->
+            <a class="navbar-brand fw-bold fs-4 text-rose"
+                   asp-controller="Store"
+                   asp-action="Index">
                 🌸 Rosea
             </a>
 
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuRosea">
+            <!-- MOBILE BUTTON -->
+            <button class="navbar-toggler"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#menuRosea">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
             <div class="collapse navbar-collapse" id="menuRosea">
 
-                <!-- MENU -->
-                <ul class="navbar-nav me-auto">
+                <!-- MENU PRINCIPAL -->
+                <ul class="navbar-nav me-auto align-items-lg-center">
 
                     @if (rol == "ADMIN")
                     {
-                        <!-- MENU ADMIN -->
-
                         <li class="nav-item">
-                            <a class="nav-link fw-semibold text-danger"
-                               asp-controller="Producto"
-                               asp-action="Index">
-                                ⚙️ Admin Productos
+                            <a class="nav-link fw-semibold text-rose"
+                                   asp-controller="Admin"
+                                   asp-action="Index">
+                                ⚙️ Panel Admin
                             </a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link fw-semibold text-danger"
+                            <a class="nav-link fw-semibold"
+                                   asp-controller="Producto"
+                                   asp-action="Index">
+                                🧴 Productos
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link fw-semibold"
                                    asp-controller="AdminPedidos"
-                               asp-action="Index">
-                                📦 Admin Pedidos
+                                   asp-action="Index">
+                                📦 Pedidos
                             </a>
                         </li>
-
-                      
                     }
-                     @if (rol == "USER")
+
+                    @if (rol == "USER")
                     {
                         <li class="nav-item">
-                            <a class="nav-link fw-semibold text-danger"
-                               asp-controller="Lista"
-                               asp-action="Index">
-                                📦 Mis Pedidos
+                            <a class="nav-link"
+                                   asp-controller="Lista"
+                                   asp-action="Index">
+                                📦 Mis pedidos
                             </a>
                         </li>
                     }
@@ -122,49 +98,45 @@
 
                         <li class="nav-item">
                             <a class="nav-link"
-                            asp-controller="Nosotros"
-                            asp-action="Index">
+                                   asp-controller="Nosotros"
+                                   asp-action="Index">
                                 Nosotros
                             </a>
                         </li>
 
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle"
-                            data-bs-toggle="dropdown">
+                                   data-bs-toggle="dropdown">
                                 Catálogo
                             </a>
 
                             <ul class="dropdown-menu">
+
                                 <li>
                                     <a class="dropdown-item"
-                                    asp-controller="Store"
-                                    asp-action="Index">
+                                           asp-controller="Store"
+                                           asp-action="Index">
                                         Todos
                                     </a>
                                 </li>
 
-
-
-
                                 <li>
                                     <a class="dropdown-item"
-                                    asp-controller="Store"
-                                    asp-action="Categoria"
-                                    asp-route-nombre="Cremas">
+                                           asp-controller="Store"
+                                           asp-action="Categoria"
+                                           asp-route-nombre="Cremas">
                                         Cremas
                                     </a>
                                 </li>
 
                                 <li>
                                     <a class="dropdown-item"
-                                    asp-controller="Store"
-                                    asp-action="Categoria"
-                                    asp-route-nombre="Sérums">
+                                           asp-controller="Store"
+                                           asp-action="Categoria"
+                                           asp-route-nombre="Sérums">
                                         Sérums
                                     </a>
                                 </li>
-
-
 
                             </ul>
                         </li>
@@ -172,42 +144,60 @@
 
                 </ul>
 
-                <li class="nav-item ms-3">
-
-                    <a class="dropdown-item"
-                           asp-controller="Cart"
-                           asp-action="Index">
-                        🛒
-                        <span id="contadorCarrito"
-                              class="translate-middle badge rounded-pill bg-danger">
-                            0
-                        </span>
-                    </a>
-               @*      <a class="nav-link position-relative" href="#" onclick="abrirCarrito()">
-
-                        🛒
-
-                        <span id="contadorCarrito"
-                              class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                            0
-                        </span>
-
-                    </a> *@
-                </li>
 
                 <!-- SEARCH -->
-                <form class="d-flex me-3" method="get" asp-controller="Catalogo" asp-action="Buscar">
-                    <input class="form-control form-control-sm" name="texto" placeholder="Buscar...">
-                    <button class="btn btn-rose btn-sm ms-2">Buscar</button>
+                <form class="d-flex me-3"
+                      method="get"
+                      asp-controller="Catalogo"
+                      asp-action="Buscar">
+
+                    <input class="form-control form-control-sm"
+                           name="texto"
+                           placeholder="Buscar...">
+
+                    <button class="btn btn-rose btn-sm ms-2">
+                        Buscar
+                    </button>
+
                 </form>
 
-                <!-- BOTÓN BUSQUEDA AVANZADA -->
-                <button class="btn btn-outline-rose btn-sm ms-2"
-                        data-bs-toggle="collapse"
-                        data-bs-target="#panelAvanzado">
-                    <i class="bi bi-funnel"></i>
-                </button>
 
+                <!-- CARRITO -->
+                <a class="nav-link position-relative me-3"
+                       asp-controller="Cart"
+                       asp-action="Index">
+
+                    🛒
+
+                    <span id="contadorCarrito"
+                          class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                        0
+                    </span>
+
+                </a>
+
+
+                <!-- BOTONES -->
+                <div class="d-flex gap-2">
+
+                    <button onclick="translateToEnglish()"
+                            class="btn btn-outline-rose btn-sm">
+                        🇺🇸
+                    </button>
+
+                    <button onclick="translateToSpanish()"
+                            class="btn btn-outline-rose btn-sm">
+                        🇪🇸
+                    </button>
+
+                    <button id="themeToggle"
+                            class="btn btn-outline-rose btn-sm">
+                        🌙
+                    </button>
+
+                </div>
+
+          
                 <!-- USUARIO -->
                 <ul class="navbar-nav ms-3">
                     <li class="nav-item dropdown">
@@ -231,7 +221,7 @@
                                 <li>
                                     <a class="dropdown-item"
                                        asp-controller="Account"
-                                       asp-action="Register">
+                                           asp-action="Register">
                                         Registrarse
                                     </a>
                                 </li>

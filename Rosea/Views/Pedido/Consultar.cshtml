@@ -1,14 +1,55 @@
-﻿<h2>Consultar pedido</h2>
+﻿<div class="container">
 
-<form id="formConsulta">
+    <!-- HERO -->
+    <div class="hero-section mb-4">
+        <h2 class="text-rose">Consultar pedido</h2>
+        <p class="text-muted">
+            Ingresa el ID del pedido y el apellido del cliente para ver su estado.
+        </p>
+    </div>
 
-    <input name="pedidoId" placeholder="ID Pedido" required />
-    <input name="apellido" placeholder="Apellido" required />
 
-    <button>Consultar</button>
+    <!-- CARD -->
+    <div class="admin-card p-4">
 
-</form>
+        <form id="formConsulta">
 
-<div id="resultado"></div>
+            <div class="row g-3">
+
+                <div class="col-md-6">
+                    <label class="form-label">ID del pedido</label>
+                    <input name="pedidoId"
+                           class="form-control"
+                           placeholder="Ej. 1023"
+                           required>
+                </div>
+
+                <div class="col-md-6">
+                    <label class="form-label">Apellido del cliente</label>
+                    <input name="apellido"
+                           class="form-control"
+                           placeholder="Ej. García"
+                           required>
+                </div>
+
+                <div class="col-12 mt-3">
+
+                    <button class="btn btn-rose">
+                        Consultar pedido
+                    </button>
+
+                </div>
+
+            </div>
+
+        </form>
+
+    </div>
+
+
+    <!-- RESULTADO -->
+    <div class="admin-card p-4 mt-4" id="resultado"></div>
+
+</div>
 
 <script type="module" src="~/js/pedidoConsulta/main.js"></script>

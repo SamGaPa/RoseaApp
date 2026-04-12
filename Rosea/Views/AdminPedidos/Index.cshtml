@@ -1,26 +1,42 @@
-﻿<h2>Administración de pedidos</h2>
+﻿<div class="container">
 
-<table class="table" id="tablaPedidos">
+    <!-- HERO -->
+    <div class="hero-section mb-4">
+        <h2 class="text-rose">Administración de pedidos</h2>
+        <p class="text-muted">Gestiona el estado de los pedidos de los clientes.</p>
+    </div>
 
-    <thead>
+    <span class="badge badge-pendiente">Pendiente</span>
+    <!-- CARD -->
+    <div class="admin-card p-4">
 
-        <tr>
-            <th>ID</th>
-            <th>Datos cliente</th>
-            <th>Telefono</th>
-            <th>fecha</th>
-            <th>Status</th>
-            
-            <th></th>
-        </tr>
+        <div class="table-responsive">
 
-    </thead>
+            <table class="table align-middle" id="tablaPedidos">
 
-    <tbody></tbody>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Datos cliente</th>
+                        <th>Teléfono</th>
+                        <th>Fecha</th>
+                        <th>Status</th>
+                        <th>Productos</th>
+                    </tr>
+                </thead>
 
-</table>
+                <tbody></tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</div>
 
 
+<!-- MODAL PRODUCTOS -->
 <div class="modal fade" id="modalProductos">
 
     <div class="modal-dialog modal-lg">
@@ -29,7 +45,9 @@
 
             <div class="modal-header">
 
-                <h5 class="modal-title">Productos del pedido</h5>
+                <h5 class="modal-title text-rose">
+                    Productos del pedido
+                </h5>
 
                 <button class="btn-close" data-bs-dismiss="modal"></button>
 
@@ -37,23 +55,24 @@
 
             <div class="modal-body">
 
-                <table class="table" id="tablaProductos">
+                <div class="table-responsive">
 
-                    <thead>
+                    <table class="table align-middle" id="tablaProductos">
 
-                        <tr>
-                            <th>Producto</th>
-                            <th>Descripción</th>
-                            <th>Precio</th>
-                            <th>Cantidad</th>
+                        <thead>
+                            <tr>
+                                <th>Producto</th>
+                                <th>Descripción</th>
+                                <th>Precio</th>
+                                <th>Cantidad</th>
+                            </tr>
+                        </thead>
 
-                        </tr>
+                        <tbody></tbody>
 
-                    </thead>
+                    </table>
 
-                    <tbody></tbody>
-
-                </table>
+                </div>
 
             </div>
 
@@ -62,5 +81,6 @@
     </div>
 
 </div>
+
 
 <script type="module" src="~/js/adminPedidos/main.js"></script>
