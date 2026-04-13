@@ -15,8 +15,8 @@ namespace Rosea.Services
         private readonly HttpClient _httpClient;
 
         //.GetAsync($"https://localhost:7092/api/productos/buscar?texto={texto}");
-        public readonly string apiUrl= "https://localhost:44325";
-        // public readonly string apiUrl ="http://samgapa-001-site1.site4future.com"; //api/productos/buscar?texto=mas
+       // public readonly string apiUrl= "https://localhost:44325";
+         public readonly string apiUrl ="http://samgapa-001-site1.site4future.com"; //api/productos/buscar?texto=mas
         public ProductoService(HttpClient httpClient)
         {
             _httpClient = httpClient;

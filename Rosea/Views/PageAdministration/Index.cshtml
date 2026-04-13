@@ -1,0 +1,90 @@
+@model List<Rosea.Models.UserAdminViewModel> 
+
+@{
+    ViewData["Title"] = "Page Administration";
+}
+
+<h2>Page Administration (ROOT only)</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Nombre</th>
+            <th>Email</th>
+            <th>Rol</th>
+            <th>Fecha</th>
+            <th>MFA</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var u in Model)
+{
+    <tr>
+        <form method="post" asp-action="UpdateUser">
+            <td>
+                @u.Id
+                <input type="hidden" name="id" value="@u.Id" />
+            </td>
+
+            <td>
+                <input class="form-control form-control-sm"
+                       name="nombre"
+                       value="@u.Nombre" />
+            </td>
+
+            <td>
+                <input class="form-control form-control-sm"
+                       name="email"
+                       value="@u.Email" />
+            </td>
+
+            <td>
+                <select class="form-control form-control-sm" name="rol">
+                    <option value="user" selected="@(u.Rol == "user")">user</option>
+                    <option value="ADMIN" selected="@(u.Rol == "ADMIN")">ADMIN</option>
+                </select>
+            </td>
+
+            <td>
+                @u.FechaRegistro.ToString("yyyy-MM-dd")
+            </td>
+
+            <td>
+                @(u.MfaEnabled ? "Enabled" : "Disabled")
+            </td>
+
+            <td>
+                <!-- GUARDAR CAMBIOS -->
+                <button class="btn btn-primary btn-sm">Save</button>
+                </td>
+            </form>
+                    <td>
+                <!-- MFA -->
+                @if (u.MfaEnabled)
+                {
+                    <form method="post" asp-action="DisableMfa" style="display:inline;">
+                        <input type="hidden" name="id" value="@u.Id" />
+                        <button class="btn btn-warning btn-sm">
+                            Disable MFA
+                        </button>
+                    </form>
+                }
+
+                <!-- DELETE -->
+                <form method="post" asp-action="DeleteUser" style="display:inline;"
+                      onsubmit="return confirm('Are you sure you want to delete this user?');">
+                    <input type="hidden" name="id" value="@u.Id" />
+                    <button class="btn btn-danger btn-sm">
+                        Delete
+                    </button>
+                </form>
+            </td>
+    </tr>
+}
+    </tbody>
+</table>
+
+
+

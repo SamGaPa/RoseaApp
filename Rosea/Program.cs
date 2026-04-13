@@ -5,6 +5,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 using Rosea.Middleware;
 using Rosea.Services;
+using Rosea.Services.Rosea.Services;
 using RoseaAPI.Services;
 using Serilog;
 using Serilog.Formatting.Json;
@@ -40,6 +41,7 @@ builder.Services.AddControllers();
 builder.Services.AddScoped<JwtService>();
 // HTTP Client para API
 builder.Services.AddHttpClient<ProductoService>();
+builder.Services.AddScoped<EmailService>();
 
 // MVC
 builder.Services.AddControllersWithViews();

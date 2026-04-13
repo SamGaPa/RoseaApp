@@ -1,0 +1,59 @@
+﻿@model List<PedidoHistorialViewModel>
+
+<h2>Historial de Pedidos</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Código</th>
+            <th>Cliente</th>
+            <th>Teléfono</th>
+            <th>Creado</th>
+            <th>Modificado</th>
+            <th>Status</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var p in Model)
+        {
+            <tr>
+                <td>@p.CodigoPedido</td>
+                <td>@p.Nombre @p.Apellidos</td>
+                <td>@p.Telefono</td>
+                <td>@p.CreationDate.ToString("yyyy-MM-dd")</td>
+                <td>@p.ModifiedDate.ToString("yyyy-MM-dd")</td>
+                <td>@p.UltimoStatus</td>
+                <td>
+                    <button class="btn btn-info btn-sm toggle-btn" data-id="@p.IdPedido">
+                        Mostrar más
+                    </button>
+                </td>
+            </tr>
+
+            <!-- DETALLE OCULTO -->
+            <tr class="detalle" id="detalle-@p.IdPedido" style="display:none;">
+                <td colspan="7">
+                    <strong>Dirección:</strong> @p.Direccion <br />
+                    <strong>CP:</strong> @p.CodigoPostal <br />
+                    <strong>Comentarios:</strong> @p.Comentarios <br />
+
+                    <hr />
+
+                    <strong>Historial:</strong>
+                    <ul>
+                        @foreach (var h in p.Historial)
+                        {
+                            <li>
+                                @h.ChangeDate.ToString("yyyy-MM-dd") :
+                                @h.OldStatus → @h.NewStatus
+                            </li>
+                        }
+                    </ul>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<script src="~/js/pedidoHistorial/main.js"></script>

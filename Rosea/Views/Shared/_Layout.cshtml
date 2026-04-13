@@ -76,26 +76,33 @@
                         </li>
                     }
 
-                    @if (rol == "USER")
+                    @if (rol == "ROOT")
                     {
                         <li class="nav-item">
-                            <a class="nav-link"
-                                   asp-controller="Lista"
+                            <a class="nav-link fw-semibold"
+                                   asp-controller="PageAdministration"
                                    asp-action="Index">
-                                📦 Mis pedidos
+                                🌸 Administracion de Pagina
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link fw-semibold"
+                                   asp-controller="PedidoHistorial"
+                                   asp-action="Index">
+                                🌸 Historial de Pedidos
                             </a>
                         </li>
                     }
-                    else
+
+                    @if (rol == "USER")
                     {
                         <li class="nav-item">
                             <a class="nav-link"
                                    asp-controller="Pedido"
                                    asp-action="Consultar">
-                                Tu pedido
+                                📦 Mis pedidos
                             </a>
                         </li>
-
                         <li class="nav-item">
                             <a class="nav-link"
                                    asp-controller="Nosotros"
@@ -104,7 +111,15 @@
                             </a>
                         </li>
 
-                        <li class="nav-item dropdown">
+                        <li class="nav-item">
+                            <a class="nav-link fw-semibold"
+                                   asp-controller="Store"
+                                   asp-action="Index">
+                                🌸 Catálogo
+                            </a>
+                        </li>
+
+@*                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle"
                                    data-bs-toggle="dropdown">
                                 Catálogo
@@ -139,7 +154,29 @@
                                 </li>
 
                             </ul>
+                        </li> *@
+
+                    }
+                    @if (rol == null)
+                    {
+                      
+
+                        <li class="nav-item">
+                            <a class="nav-link fw-semibold"
+                                   asp-controller="Store"
+                                   asp-action="Index">
+                                🌸 Catálogo
+                            </a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link"
+                                   asp-controller="Nosotros"
+                                   asp-action="Index">
+                                Nosotros
+                            </a>
+                        </li>
+
+
                     }
 
                 </ul>
