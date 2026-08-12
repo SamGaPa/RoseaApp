@@ -13,5 +13,17 @@ namespace Rosea.Controllers
 
             return View();
         }
+        public IActionResult IndexR()
+        {
+            return View();
+        }
+        public IActionResult CheckoutR()
+        {
+            return View();
+        }
+
+
     }
+
+
 }

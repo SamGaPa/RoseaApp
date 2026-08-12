@@ -17,8 +17,8 @@ namespace RoseaAPI.Controllers
     [Route("api/auth")]
     public class AuthController : ControllerBase
     {
-        //  private readonly string cs = "server=localhost;database=roseadb;user=root;password=sam93"; 
-        private readonly string cs = "Server=MYSQL5045.site4now.net;Database=db_ac7b84_roseadb;Uid=ac7b84_roseadb;password=uPdM9mL!Hw4_N5d";
+          private readonly string cs = "server=localhost;database=roseadb;user=root;password=sam93"; 
+       // private readonly string cs = "Server=MYSQL5045.site4now.net;Database=db_ac7b84_roseadb;Uid=ac7b84_roseadb;password=uPdM9mL!Hw4_N5d";
 
 
         private readonly JwtService _jwt;
@@ -316,13 +316,13 @@ namespace RoseaAPI.Controllers
             {
 
 
-                var bytes = new byte[20];
-                using (var rng = RandomNumberGenerator.Create())
-                {
-                    rng.GetBytes(bytes);
-                }
+                    var bytes = new byte[20];
+                    using (var rng = RandomNumberGenerator.Create())
+                    {
+                        rng.GetBytes(bytes);
+                    }
 
-                var base32Secret = Base32Encoding.ToString(bytes);
+                    var base32Secret = Base32Encoding.ToString(bytes);
 
                // var secret = KeyGeneration.GenerateRandomKey(20);
                 //var base32Secret = Base32Encoding.ToString(secret);

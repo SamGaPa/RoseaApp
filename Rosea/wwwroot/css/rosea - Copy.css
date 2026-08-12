@@ -4,25 +4,23 @@
 
 /* LIGHT MODE (default) */
 :root {
-    /* Rosa principal */
-    --rose-primary: #d94f8a;
-    /* Rosa elegante */
-    --rose-secondary: #f3b6cf;
-    /* Fondos */
-    --rose-soft: #fff0f6;
-    --rose-light: #ffe3ef;
-    /* Contraste */
-    --rose-dark: #a83263;
-    /* Detalles */
-    --rose-gold: #c98b8b;
-    --text-main: #442333;
-    --text-light: #806675;
+    --rose-primary: #d63384;
+    --rose-secondary: #f8c8dc;
+    --rose-soft: #fff4f8;
+    --rose-light: #fdeaf1;
+    --rose-dark: #b02363;
+    --rose-pastel: #f9d6e5;
+    --text-main: #3a3a3a;
+    --text-light: #777;
     --surface: #ffffff;
-    --surface-card: #fff8fb;
-    --border-soft: #f3d4df;
-    --shadow-soft: 0 10px 30px rgba(217,79,138,.12);
-    --radius-lg: 30px;
-    --radius-md: 18px;
+    --surface-soft: #fff4f8;
+    --surface-card: #ffffff;
+    --border-soft: rgba(0,0,0,0.05);
+    --shadow-soft: 0 8px 20px rgba(214, 51, 132, 0.08);
+    --shadow-hover: 0 12px 25px rgba(214, 51, 132, 0.15);
+    --radius-lg: 20px;
+    --radius-md: 12px;
+    --gradient-body: linear-gradient( 180deg, #fff4f8 0%, #ffffff 50% );
 }
 
 /* =========================
@@ -113,31 +111,29 @@ body {
 ========================= */
 
 .btn-rose {
-    background: linear-gradient( 135deg, #d94f8a, #ed83ad );
+    background-color: var(--rose-primary);
     color: white;
-    border-radius: 12px;
-    padding: 12px 30px;
-    font-weight: 600;
+    border-radius: 30px;
+    padding: 10px 25px;
     border: none;
-    transition: .3s;
+    transition: all .3s ease;
 }
 
-
     .btn-rose:hover {
-        box-shadow: 0 8px 20px rgba(217,79,138,.35);
+        background-color: var(--rose-dark);
+        transform: translateY(-2px);
     }
 
 .btn-outline-rose {
-    border: 2px solid #d94f8a;
-    background: white;
-    color: #d94f8a;
-    border-radius: 12px;
-    padding: 10px 25px;
+    border: 1px solid var(--rose-primary);
+    color: var(--rose-primary);
+    border-radius: 20px;
+    transition: all .3s ease;
 }
 
-
     .btn-outline-rose:hover {
-        background: #fff0f6;
+        background-color: var(--rose-primary);
+        color: white;
     }
 
 /* =========================
@@ -151,9 +147,12 @@ body {
 }
 
 .home-hero {
-    background: radial-gradient( circle at top right, #ffd5e6, transparent 40% ), linear-gradient( 180deg, #fff5fa, white );
-    padding: 70px 30px;
-    border-radius: 0 0 80px 80px;
+    background: linear-gradient( 135deg, var(--rose-light), var(--rose-secondary) );
+    padding: 10px 20px;
+    border-radius: 0 0 50px 60px;
+    text-align: center;
+    margin-bottom: 50px;
+    color: var(--rose-primary);
 }
 
     .home-hero p {
@@ -165,35 +164,27 @@ body {
 ========================= */
 
 .producto-card {
-    background: white;
-    border-radius: 30px;
-    padding: 25px;
-    border: none;
-    box-shadow: 0 15px 35px rgba(217,79,138,.10);
-    position: relative;
-    overflow: hidden;
+    background-color: var(--surface-card);
+    padding: 20px;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-soft);
+    border: 1px solid var(--border-soft);
+    transition: transform .3s ease, box-shadow .3s ease;
 }
 
-
-    .producto-card::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 5px;
-        background: linear-gradient( 90deg, #d94f8a, #f7c5d9 );
-    }
-
     .producto-card:hover {
+        transform: translateY(-6px);
         box-shadow: var(--shadow-hover);
     }
 
 .producto-img {
-    height: 240px;
+    width: 100%;
+    height: 220px;
     object-fit: cover;
-    border-radius: 25px;
+    border-radius: var(--radius-md);
+    margin-bottom: 15px;
 }
+
 .producto-nombre {
     color: var(--rose-primary);
     font-weight: 600;
@@ -232,11 +223,12 @@ body {
     border-radius: 50%;
     font-weight: bold;
     cursor: pointer;
+    transition: .2s ease;
 }
 
     .btn-cantidad:hover {
         background: var(--rose-dark);
-       
+        transform: scale(1.1);
     }
 
 .cantidad-control input {
@@ -287,9 +279,10 @@ body {
 ========================= */
 
 .navbar-glass {
-    background: white;
-    padding: 15px 40px;
-    box-shadow: 0 5px 20px rgba(0,0,0,.05);
+    background: rgba(255,255,255,0.75);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border-soft);
+    transition: all .3s ease;
 }
 
 /* Dark navbar fix */
@@ -304,13 +297,13 @@ body {
 
 .admin-card {
     border-radius: 18px;
+    transition: all .25s ease;
     background: var(--surface);
     box-shadow: var(--shadow-soft);
 }
 
     .admin-card:hover {
-     
-
+        transform: translateY(-6px);
         box-shadow: var(--shadow-hover);
     }
 

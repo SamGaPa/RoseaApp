@@ -134,7 +134,7 @@ app.UseAuthorization();    // 3️⃣ Roles
 app.MapControllers();
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Store}/{action=Index}/{id?}");
+    pattern: "{controller=Store}/{action=IndexR}/{id?}");
 
 
 var supportedCultures = new[]
@@ -144,6 +144,7 @@ var supportedCultures = new[]
 };
 
 app.UseRequestLocalization(new RequestLocalizationOptions
+
 {
     DefaultRequestCulture = new RequestCulture("es"),
     SupportedCultures = supportedCultures,

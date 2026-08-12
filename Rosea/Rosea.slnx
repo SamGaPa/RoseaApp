@@ -4,6 +4,7 @@
     <Platform Name="x64" />
   </Configurations>
   <Project Path="../RoseaAPI/RoseaAPI.csproj" Id="daa3d621-4b88-41c4-964d-022fe51a89c0" />
+  <Project Path="../RoseaTests/RoseaTests.csproj" Id="304d7e04-f4bd-4cfc-a65d-92a270ce8170" />
   <Project Path="Rosea.csproj">
     <Platform Solution="*|x64" Project="x64" />
   </Project>
