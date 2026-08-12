@@ -40,6 +40,9 @@ namespace RoseaAPI.Controllers
             try
             {
 
+
+
+
                 var cmd = new MySqlCommand(@"
 
                     INSERT INTO pedido
