@@ -26,7 +26,7 @@ namespace RoseaAPI.Controllers
         {
             var random = new Random();
 
-            string pedidoId = GeneradorID.GenerarID(); // random.Next(10000, 99999);
+            string pedidoId = GeneradorID.GenerarID(); // random.Next(10000, 99999);   s
 
 
             string connectionString = _configuration.GetConnectionString("MySqlConnection");
