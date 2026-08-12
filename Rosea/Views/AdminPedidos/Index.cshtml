@@ -1,5 +1,86 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
+﻿<div class="container">
+
+    <!-- HERO -->
+    <div class="hero-section mb-4">
+        <h2 class="text-rose">Administración de pedidos</h2>
+        <p class="text-muted">Gestiona el estado de los pedidos de los clientes.</p>
+    </div>
+
+    <span class="badge badge-pendiente">Pendiente</span>
+    <!-- CARD -->
+    <div class="admin-card p-4">
+
+        <div class="table-responsive">
+
+            <table class="table align-middle" id="tablaPedidos">
+
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Datos cliente</th>
+                        <th>Teléfono</th>
+                        <th>Fecha</th>
+                        <th>Status</th>
+                        <th>Productos</th>
+                    </tr>
+                </thead>
+
+                <tbody></tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- MODAL PRODUCTOS -->
+<div class="modal fade" id="modalProductos">
+
+    <div class="modal-dialog modal-lg">
+
+        <div class="modal-content">
+
+            <div class="modal-header">
+
+                <h5 class="modal-title text-rose">
+                    Productos del pedido
+                </h5>
+
+                <button class="btn-close" data-bs-dismiss="modal"></button>
+
+            </div>
+
+            <div class="modal-body">
+
+                <div class="table-responsive">
+
+                    <table class="table align-middle" id="tablaProductos">
+
+                        <thead>
+                            <tr>
+                                <th>Producto</th>
+                                <th>Descripción</th>
+                                <th>Precio</th>
+                                <th>Cantidad</th>
+                            </tr>
+                        </thead>
+
+                        <tbody></tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<script type="module" src="~/js/adminPedidos/main.js"></script>

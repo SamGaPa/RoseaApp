@@ -46,16 +46,16 @@ builder.Services.AddAuthentication(options =>
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("PermitirMVC",
-        policy =>
-        {
+         p => p.AllowAnyOrigin()
+              .AllowAnyHeader()
+              .AllowAnyMethod());
 
-            //      policy.AllowAnyOrigin()
-            //.AllowAnyHeader()
-            //.AllowAnyMethod();
-            policy.WithOrigins("https://localhost:44325") // puerto del MVC
-                  .AllowAnyHeader()
-                  .AllowAnyMethod();
-        });
+    //policy =>
+    //{
+    //    policy.WithOrigins("https://localhost:44325") // puerto del MVC
+    //          .AllowAnyHeader()
+    //          .AllowAnyMethod();
+    //});
 });
 
 builder.Services.AddControllers();
@@ -67,12 +67,15 @@ builder.Services.AddScoped<JwtService>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
+//if (app.Environment.IsDevelopment())
+//{
+//    app.UseSwagger();
+//    app.UseSwaggerUI();
+//}
+app.UseSwagger();
+app.UseSwaggerUI();
 
+//app.UsePathBase("/api");
 app.UseHttpsRedirection();
 
 app.UseAuthorization();

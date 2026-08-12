@@ -1,0 +1,45 @@
+﻿<h2>Datos del pedido</h2>
+
+<form id="formPedido">
+
+    <div class="row">
+
+        <div class="col-md-6 mb-3">
+            <label>Nombre</label>
+            <input class="form-control" name="nombre" required />
+        </div>
+
+        <div class="col-md-6 mb-3">
+            <label>Apellidos</label>
+            <input class="form-control" name="apellidos" required />
+        </div>
+
+        <div class="col-md-6 mb-3">
+            <label>Telefono</label>
+            <input class="form-control" name="telefono" required />
+        </div>
+
+        <div class="col-md-6 mb-3">
+            <label>Codigo Postal</label>
+            <input class="form-control" name="cp" required />
+        </div>
+
+        <div class="col-12 mb-3">
+            <label>Direccion</label>
+            <input class="form-control" name="direccion" required />
+        </div>
+
+        <div class="col-12 mb-3">
+            <label>Comentarios</label>
+            <textarea class="form-control" name="comentarios"></textarea>
+        </div>
+
+    </div>
+
+    <button class="btn btn-success">
+        Confirmar Pedido
+    </button>
+
+</form>
+
+<script type="module" src="~/js/checkout/main.js"></script>

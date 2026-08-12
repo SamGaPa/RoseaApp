@@ -19,6 +19,12 @@ namespace Rosea.Controllers
             return View();
         }
 
+
+        public IActionResult Register()
+        {
+            return View();
+        }
+
         // POST Login REAL con MySQL
         //[HttpPost]
         //public async Task<IActionResult> Login(LoginViewModel model)

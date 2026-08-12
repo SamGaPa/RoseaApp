@@ -1,17 +1,23 @@
-﻿using System.Diagnostics;
-using System.Security.Claims;
-using Rosea.Services;
+﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Localization;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.IdentityModel.Tokens;
 using Rosea.Middleware;
+using Rosea.Services;
+using Rosea.Services.Rosea.Services;
+using RoseaAPI.Services;
 using Serilog;
 using Serilog.Formatting.Json;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.IdentityModel.Tokens;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.Extensions.DependencyInjection;
 using System;
+using System.Diagnostics;
+using System.Globalization;
+using System.Security.Claims;
+using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
-
+var key = Encoding.UTF8.GetBytes("SUPER_SECRETO_ROSEA_2026_2250_NO_SE_LO_DICES_A_NADIE");
+                          
 // Configure Serilog (JSON output)
 var environment = builder.Environment.EnvironmentName;
 Log.Logger = new LoggerConfiguration()
@@ -27,8 +33,15 @@ builder.Host.UseSerilog();
 
 // ================= SERVICIOS =================
 
+builder.Services.AddLocalization(options => options.ResourcesPath = "Resources");
+
+builder.Services.AddControllersWithViews()
+    .AddViewLocalization();
+builder.Services.AddControllers();
+builder.Services.AddScoped<JwtService>();
 // HTTP Client para API
 builder.Services.AddHttpClient<ProductoService>();
+builder.Services.AddScoped<EmailService>();
 
 // MVC
 builder.Services.AddControllersWithViews();
@@ -46,9 +59,10 @@ builder.Services.AddSession(options =>
     options.IdleTimeout = TimeSpan.FromHours(1);
 });
 
-builder.Services.AddAuthentication("Bearer")
-    .AddJwtBearer("Bearer", options =>
+builder.Services.AddAuthentication()
+    .AddJwtBearer( options =>
     {
+        options.RequireHttpsMetadata = false;
         options.TokenValidationParameters = new TokenValidationParameters
         {
             ValidateIssuer = false,
@@ -56,8 +70,11 @@ builder.Services.AddAuthentication("Bearer")
             ValidateLifetime = true,
             ValidateIssuerSigningKey = true,
             IssuerSigningKey = new SymmetricSecurityKey(
-                System.Text.Encoding.UTF8.GetBytes("SUPER_SECRETO_ROSEA_2026_2250_NO_SE_LO_DICES_A_NADIE")
+                key
             )
+            //IssuerSigningKey = new SymmetricSecurityKey(
+            //    System.Text.Encoding.UTF8.GetBytes("SUPER_SECRETO_ROSEA_2026_2250_NO_SE_LO_DICES_A_NADIE")
+            //)
         };
 
         // 🔥 AQUÍ está la magia
@@ -114,9 +131,26 @@ app.UseSession();          // 1️⃣ Sesiones
 app.UseAuthentication();   // 2️⃣ Auth
 app.UseAuthorization();    // 3️⃣ Roles
 
+app.MapControllers();
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Store}/{action=Index}/{id?}");
+    pattern: "{controller=Store}/{action=IndexR}/{id?}");
+
+
+var supportedCultures = new[]
+{
+    new CultureInfo("es"),
+    new CultureInfo("en")
+};
+
+app.UseRequestLocalization(new RequestLocalizationOptions
+
+{
+    DefaultRequestCulture = new RequestCulture("es"),
+    SupportedCultures = supportedCultures,
+    SupportedUICultures = supportedCultures
+});
+
 
 app.Run();
 

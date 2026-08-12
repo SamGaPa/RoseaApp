@@ -4,6 +4,15 @@
 }
 
 
+@using Microsoft.AspNetCore.Http
+@inject IHttpContextAccessor HttpContextAccessor
+
+@{
+    var rol = HttpContextAccessor.HttpContext.Session.GetString("Rol");
+    var usuario = HttpContextAccessor.HttpContext.Session.GetString("Usuario");
+}
+
+
 
 <div class="auth-page">
 
@@ -29,7 +38,7 @@
                         <label class="nav-link fw-semibold text-danger">Correo electrónico</label>
                         <input id="UserMail" type="text"
                                class="form-control"
-                               value="@User.Identity.Name"
+                               value="@usuario"
                                disabled />
                     </div>
 

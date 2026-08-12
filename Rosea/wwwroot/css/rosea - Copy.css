@@ -1,0 +1,359 @@
+﻿/* =========================
+   🌸 ROSEA DESIGN SYSTEM
+========================= */
+
+/* LIGHT MODE (default) */
+:root {
+    --rose-primary: #d63384;
+    --rose-secondary: #f8c8dc;
+    --rose-soft: #fff4f8;
+    --rose-light: #fdeaf1;
+    --rose-dark: #b02363;
+    --rose-pastel: #f9d6e5;
+    --text-main: #3a3a3a;
+    --text-light: #777;
+    --surface: #ffffff;
+    --surface-soft: #fff4f8;
+    --surface-card: #ffffff;
+    --border-soft: rgba(0,0,0,0.05);
+    --shadow-soft: 0 8px 20px rgba(214, 51, 132, 0.08);
+    --shadow-hover: 0 12px 25px rgba(214, 51, 132, 0.15);
+    --radius-lg: 20px;
+    --radius-md: 12px;
+    --gradient-body: linear-gradient( 180deg, #fff4f8 0%, #ffffff 50% );
+}
+
+/* =========================
+   🌙 DARK MODE
+========================= */
+
+.dark-mode {
+    --rose-primary: #ff6fae;
+    --rose-secondary: #ffc2dc;
+    --rose-dark: #ff4f9a;
+    --rose-pastel: #ffd6ea;
+    --rose-soft: #2b2b31;
+    --rose-light: #34343c;
+    --surface: #34343c;
+    --surface-soft: #40404a;
+    --surface-supersoft: #727281;
+    --surface-card: #3a3a44;
+    --text-main: #f2f2f4;
+    --text-light: #c8c8cf;
+    --border-soft: rgba(255,255,255,0.08);
+    --shadow-soft: 0 8px 25px rgba(0,0,0,0.35);
+    --shadow-hover: 0 15px 35px rgba(0,0,0,0.45);
+    --gradient-body: linear-gradient( 180deg, #2b2b31 0%, #32323a 70% );
+}
+
+
+
+
+    .dark-mode .navbar-brand {
+        color: var(--rose-primary) !important;
+    }
+
+    .dark-mode .nav-link {
+        color: var(--rose-primary) !important;
+    }
+
+    .dark-mode .card-body {
+        background-color: var(--surface-supersoft);
+    }
+
+    .dark-mode .text-muted {
+        color: var(--text-main) !important;
+    }
+
+    .dark-mode .producto-descripcion {
+        font-size: 14px;
+        color: var(--text-main);
+        min-height: 50px;
+    }
+
+
+
+    .dark-mode .navbar-toggler {
+        border-color: rgba(255,255,255,0.2);
+    }
+
+    .dark-mode .navbar-toggler-icon {
+        filter: invert(1);
+    }
+
+    .dark-mode #themeToggle {
+        border-color: var(--rose-primary);
+        color: var(--rose-primary);
+    }
+
+/* =========================
+   BASE GENERAL
+========================= */
+
+body {
+    font-family: 'Poppins', sans-serif;
+    padding-top: 80px;
+    background: var(--gradient-body);
+    color: var(--text-main);
+    margin-top: 0;
+}
+
+/* =========================
+   TEXTOS
+========================= */
+
+.text-rose {
+    color: var(--rose-primary) !important;
+}
+
+/* =========================
+   BOTONES
+========================= */
+
+.btn-rose {
+    background-color: var(--rose-primary);
+    color: white;
+    border-radius: 30px;
+    padding: 10px 25px;
+    border: none;
+    transition: all .3s ease;
+}
+
+    .btn-rose:hover {
+        background-color: var(--rose-dark);
+        transform: translateY(-2px);
+    }
+
+.btn-outline-rose {
+    border: 1px solid var(--rose-primary);
+    color: var(--rose-primary);
+    border-radius: 20px;
+    transition: all .3s ease;
+}
+
+    .btn-outline-rose:hover {
+        background-color: var(--rose-primary);
+        color: white;
+    }
+
+/* =========================
+   HERO
+========================= */
+
+.hero-section {
+    padding: 40px 0 30px 0;
+    background: linear-gradient( 135deg, var(--rose-soft), var(--surface) );
+    border-bottom: 1px solid var(--border-soft);
+}
+
+.home-hero {
+    background: linear-gradient( 135deg, var(--rose-light), var(--rose-secondary) );
+    padding: 10px 20px;
+    border-radius: 0 0 50px 60px;
+    text-align: center;
+    margin-bottom: 50px;
+    color: var(--rose-primary);
+}
+
+    .home-hero p {
+        color: var(--text-light);
+    }
+
+/* =========================
+   PRODUCT CARD
+========================= */
+
+.producto-card {
+    background-color: var(--surface-card);
+    padding: 20px;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-soft);
+    border: 1px solid var(--border-soft);
+    transition: transform .3s ease, box-shadow .3s ease;
+}
+
+    .producto-card:hover {
+        transform: translateY(-6px);
+        box-shadow: var(--shadow-hover);
+    }
+
+.producto-img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    border-radius: var(--radius-md);
+    margin-bottom: 15px;
+}
+
+.producto-nombre {
+    color: var(--rose-primary);
+    font-weight: 600;
+}
+
+.producto-descripcion {
+    font-size: 14px;
+    color: var(--text-light);
+    min-height: 50px;
+}
+
+.producto-precio {
+    font-size: 18px;
+    font-weight: bold;
+    color: var(--rose-dark);
+    margin: 10px 0;
+}
+
+/* =========================
+   QUANTITY CONTROL
+========================= */
+
+.cantidad-control {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 15px 0;
+}
+
+.btn-cantidad {
+    background: var(--rose-primary);
+    color: white;
+    border: none;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    font-weight: bold;
+    cursor: pointer;
+    transition: .2s ease;
+}
+
+    .btn-cantidad:hover {
+        background: var(--rose-dark);
+        transform: scale(1.1);
+    }
+
+.cantidad-control input {
+    width: 45px;
+    text-align: center;
+    border: 1px solid var(--rose-secondary);
+    border-radius: 8px;
+    margin: 0 10px;
+    background: var(--surface);
+    color: var(--text-main);
+}
+
+/* =========================
+   TABLES
+========================= */
+
+.table thead {
+    border-bottom: 2px solid var(--rose-secondary);
+}
+
+.table tbody tr:hover {
+    background-color: var(--rose-soft);
+}
+
+/* =========================
+   MODALS
+========================= */
+
+.modal-content {
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-hover);
+    background: var(--surface);
+    color: var(--text-main);
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+.footer-premium {
+    background: linear-gradient( 135deg, var(--rose-soft), var(--surface) );
+    padding: 50px 0;
+    margin-top: 80px;
+}
+
+/* =========================
+   NAVBAR
+========================= */
+
+.navbar-glass {
+    background: rgba(255,255,255,0.75);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border-soft);
+    transition: all .3s ease;
+}
+
+/* Dark navbar fix */
+
+.dark-mode .navbar-glass {
+    background: rgba(24,24,28,0.75);
+}
+
+/* =========================
+   ADMIN CARD
+========================= */
+
+.admin-card {
+    border-radius: 18px;
+    transition: all .25s ease;
+    background: var(--surface);
+    box-shadow: var(--shadow-soft);
+}
+
+    .admin-card:hover {
+        transform: translateY(-6px);
+        box-shadow: var(--shadow-hover);
+    }
+
+/* =========================
+   TOAST
+========================= */
+
+.toast {
+    background: var(--surface-soft);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-hover);
+    color: var(--text-main);
+}
+
+#google_translate_element {
+    position: absolute;
+    left: -9999px;
+}
+.goog-te-banner-frame.skiptranslate {
+    display: none !important;
+}
+
+
+.goog-te-gadget {
+    display: none !important;
+}
+
+.goog-tooltip {
+    display: none !important;
+}
+
+    .goog-tooltip:hover {
+        display: none !important;
+    }
+
+.goog-text-highlight {
+    background: none !important;
+    box-shadow: none !important;
+}
+.badge-pendiente {
+    background: #ffe5f0;
+    color: #b02363;
+}
+
+.badge-enviado {
+    background: #e6f7ff;
+    color: #0077b6;
+}
+
+.badge-entregado {
+    background: #e8f9f0;
+    color: #2a9d8f;
+}

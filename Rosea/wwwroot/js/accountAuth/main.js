@@ -9,6 +9,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
         e.preventDefault();
 
+        // comentar para hackear el capcha en pruebas, pero no olvidar descomentar para producción
+        const captcha = grecaptcha.getResponse();
+
+        if (!captcha) {
+            alert("Por favor completa el captcha");
+            return;
+        }
+
+
         const email = document.querySelector("#email").value;
         const password = document.querySelector("#password").value;
        
@@ -53,7 +62,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 async function completeLogin(data, email) {
 
-    // guardar JWT en cookie (ya lo hacías)
+    // guardar JWT en cookie
     document.cookie = "jwt=" + data.token + "; path=/";
     sessionStorage.setItem("token", data.token); // opcional, para usar en JS
     // llamar al endpoint para que el servidor cree Session["Usuario"] y ["Rol"]
@@ -74,6 +83,8 @@ async function completeLogin(data, email) {
 
     if (data.rol === "ADMIN")
         window.location = "/Admin";
+    else if (data.rol === "ROOT")
+        window.location = "/PageAdministration";
     else
         window.location = "/Store";
 }

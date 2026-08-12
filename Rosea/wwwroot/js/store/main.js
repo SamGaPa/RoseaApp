@@ -1,6 +1,10 @@
 ﻿import * as api from "./api.js";
 import * as ui from "./ui.js";
 import * as storage from "./storage.js";
+import * as cartCounter from "../cart/cartCounter.js";
+import * as cartstorage from "../storage.js";
+
+
 
 let productoAEliminar = null;
 // 🌷 Mostrar Toast
@@ -101,17 +105,67 @@ document.addEventListener("DOMContentLoaded", function () {
             else if (action === "inc") val = val + 1;
             input.value = val;
         }
-
-        // agregar al carrito (placeholder behavior)
         if (target.classList.contains("agregar")) {
+
             const id = target.dataset.id;
-            const cantidad = container.querySelector(`.cantidad-input[data-id="${id}"]`)?.value || "1";
-            mostrarToast(`Agregado ${cantidad} unidad(es) al carrito (id: ${id})`);
-            // TODO: wire real cart add via storage/api
+            const nombre = target.dataset.nombre;
+            const precio = target.dataset.precio;
+            const imagen = target.dataset.imagen;
+
+            const container = target.closest(".card");
+
+            const cantidad =
+                container.querySelector(`.cantidad-input[data-id="${id}"]`)?.value || "1";
+
+            const producto = {
+                id: id,
+                nombre: nombre,
+                precio: Number(precio),
+                imagen: imagen,
+                qty: parseInt(cantidad)
+            };
+
+            cartstorage.addToCart(producto);
+
+            cartCounter.actualizarContadorCarrito();
+
+            mostrarToast(`Agregado ${cantidad} unidad(es) al carrito`);
         }
 
-      
     }
+
+    document.addEventListener("click", function (e) {
+
+       // const target = e.target;
+
+        //if (target.classList.contains("agregar")) {
+
+        //    const id = target.dataset.id;
+        //    const nombre = target.dataset.nombre;
+        //    const precio = target.dataset.precio;
+        //    const imagen = target.dataset.imagen;
+
+        //    const container = target.closest(".card");
+
+        //    const cantidad =
+        //        container.querySelector(`.cantidad-input[data-id="${id}"]`)?.value || "1";
+
+        //    const producto = {
+        //        id: id,
+        //        nombre: nombre,
+        //        precio: Number(precio),
+        //        imagen: imagen,
+        //        qty: parseInt(cantidad)
+        //    };
+
+        //    cartstorage.addToCart(producto);
+
+        //    cartCounter.actualizarContadorCarrito();
+
+        //    mostrarToast(`Agregado ${cantidad} unidad(es) al carrito`);
+        //}
+
+    });
 
     // Attach listeners to both containers
     const carouselContainer = document.getElementById("CarrouselProductos");

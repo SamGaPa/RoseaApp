@@ -1,7 +1,7 @@
 // Shopping cart helpers — add to your existing storage module.
 // Exports: cart helpers + preserve other storage exports if present.
 
-const CART_KEY = 'miPedido';
+const CART_KEY = 'rosea_carrito';
 
 export function getCached(key) {
     try { return JSON.parse(localStorage.getItem(key)); } catch { return null; }
@@ -17,14 +17,37 @@ export function getCart() {
 export function setCart(items) {
     localStorage.setItem(CART_KEY, JSON.stringify(items));
 }
+//export function addToCart(item) {
+//    const items = getCart();
+//    const existing = items.find(i => i.id == item.id);
+//    if (existing) existing.qty = (existing.qty || 1) + (item.qty || 1);
+//    else items.push(Object.assign({ qty: 1 }, item));
+//    setCart(items);
+//    return items;
+//}
+
+
 export function addToCart(item) {
+
     const items = getCart();
+
     const existing = items.find(i => i.id == item.id);
-    if (existing) existing.qty = (existing.qty || 1) + (item.qty || 1);
-    else items.push(Object.assign({ qty: 1 }, item));
+
+    if (existing) {
+        cantidad.cantidad = (existing.qty || 1) + (item.qty || 1);
+        existing.qty = (existing.qty || 1) + (item.qty || 1);
+
+    } else {
+
+        items.push(item);
+
+    }
+
     setCart(items);
+
     return items;
 }
+
 export function removeFromCart(id) {
     const items = getCart().filter(i => i.id != id);
     setCart(items);

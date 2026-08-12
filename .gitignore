@@ -1,0 +1,7 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/RoseaAPI/Logs/roseaapi-20260404.json
+/RoseaAPI/Logs/roseaapi-20260405.json
+/.vs/CopilotSnapshots/FD808699A015C04CA76A82E3320F28C9

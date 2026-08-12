@@ -1,0 +1,55 @@
+﻿<div class="container">
+
+    <!-- HERO -->
+    <div class="hero-section mb-4">
+        <h2 class="text-rose">Consultar pedido</h2>
+        <p class="text-muted">
+            Ingresa el ID del pedido y el apellido del cliente para ver su estado.
+        </p>
+    </div>
+
+
+    <!-- CARD -->
+    <div class="admin-card p-4">
+
+        <form id="formConsulta">
+
+            <div class="row g-3">
+
+                <div class="col-md-6">
+                    <label class="form-label">ID del pedido</label>
+                    <input name="pedidoId"
+                           class="form-control"
+                           placeholder="Ej. 1023"
+                           required>
+                </div>
+
+                <div class="col-md-6">
+                    <label class="form-label">Apellido del cliente</label>
+                    <input name="apellido"
+                           class="form-control"
+                           placeholder="Ej. García"
+                           required>
+                </div>
+
+                <div class="col-12 mt-3">
+
+                    <button class="btn btn-rose">
+                        Consultar pedido
+                    </button>
+
+                </div>
+
+            </div>
+
+        </form>
+
+    </div>
+
+
+    <!-- RESULTADO -->
+    <div class="admin-card p-4 mt-4" id="resultado"></div>
+
+</div>
+
+<script type="module" src="~/js/pedidoConsulta/main.js"></script>

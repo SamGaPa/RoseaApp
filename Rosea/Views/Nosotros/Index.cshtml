@@ -1,55 +1,89 @@
 ﻿@{
     ViewData["Title"] = "Nosotros";
 }
-<link rel="stylesheet" href="~/css/rosea.css" />
-<div class="about-container">
 
-    <section class="about-hero">
-        <h1>Sobre Rosea</h1>
-        <p>Cuidado personal con calidad, innovación y compromiso.</p>
-    </section>
+<div class="container">
 
-    <section class="about-section">
-        <h2>Misión</h2>
-        <p>
-            Brindar productos de cuidado personal de alta calidad que
-            mejoren el bienestar de nuestros clientes, combinando
-            innovación, seguridad y precios accesibles.
+    <!-- HERO -->
+    <div class="hero-section text-center mb-5">
+        <h1 class="text-rose">Sobre Rosea</h1>
+        <p class="text-muted">
+            Cuidado personal con calidad, innovación y compromiso.
         </p>
-    </section>
+    </div>
 
-    <section class="about-section">
-        <h2>Visión</h2>
-        <p>
-            Ser una empresa líder en el sector de productos de cuidado personal
-            en México, reconocida por su excelencia, confianza y compromiso con el cliente.
-        </p>
-    </section>
 
-    <section class="about-section">
-        <h2>Valores</h2>
+    <!-- MISIÓN Y VISIÓN -->
+    <div class="row mb-5">
 
-        <div class="valores-grid">
-            <div class="valor-card">
-                <h3>Calidad</h3>
-                <p>Seleccionamos los mejores productos para garantizar satisfacción.</p>
-            </div>
-
-            <div class="valor-card">
-                <h3>Compromiso</h3>
-                <p>Nos enfocamos en brindar el mejor servicio a nuestros clientes.</p>
-            </div>
-
-            <div class="valor-card">
-                <h3>Innovación</h3>
-                <p>Buscamos constantemente mejorar nuestros procesos y catálogo.</p>
-            </div>
-
-            <div class="valor-card">
-                <h3>Responsabilidad</h3>
-                <p>Actuamos con ética y respeto hacia nuestros clientes y colaboradores.</p>
+        <div class="col-md-6 mb-4">
+            <div class="producto-card h-100">
+                <h4 class="text-rose mb-3">Misión</h4>
+                <p>
+                    Brindar productos de cuidado personal de alta calidad que
+                    mejoren el bienestar de nuestros clientes, combinando
+                    innovación, seguridad y precios accesibles.
+                </p>
             </div>
         </div>
-    </section>
+
+        <div class="col-md-6 mb-4">
+            <div class="producto-card h-100">
+                <h4 class="text-rose mb-3">Visión</h4>
+                <p>
+                    Ser una empresa líder en el sector de productos de cuidado personal
+                    en México, reconocida por su excelencia, confianza y compromiso con el cliente.
+                </p>
+            </div>
+        </div>
+
+    </div>
+
+
+    <!-- VALORES -->
+    <div class="mb-4">
+        <h3 class="text-rose mb-4">Nuestros valores</h3>
+
+        <div class="row g-4">
+
+            <div class="col-md-3 col-sm-6">
+                <div class="producto-card text-center h-100">
+                    <h5 class="text-rose">Calidad</h5>
+                    <p class="producto-descripcion">
+                        Seleccionamos los mejores productos para garantizar satisfacción.
+                    </p>
+                </div>
+            </div>
+
+            <div class="col-md-3 col-sm-6">
+                <div class="producto-card text-center h-100">
+                    <h5 class="text-rose">Compromiso</h5>
+                    <p class="producto-descripcion">
+                        Nos enfocamos en brindar el mejor servicio a nuestros clientes.
+                    </p>
+                </div>
+            </div>
+
+            <div class="col-md-3 col-sm-6">
+                <div class="producto-card text-center h-100">
+                    <h5 class="text-rose">Innovación</h5>
+                    <p class="producto-descripcion">
+                        Buscamos constantemente mejorar nuestros procesos y catálogo.
+                    </p>
+                </div>
+            </div>
+
+            <div class="col-md-3 col-sm-6">
+                <div class="producto-card text-center h-100">
+                    <h5 class="text-rose">Responsabilidad</h5>
+                    <p class="producto-descripcion">
+                        Actuamos con ética y respeto hacia nuestros clientes y colaboradores.
+                    </p>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
 
 </div>

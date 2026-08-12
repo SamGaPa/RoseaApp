@@ -1,5 +1,6 @@
 ﻿
-const API_URL = "http://localhost:5223/api/auth"; // cambia puerto
+//const API_URL = "http://localhost:5223/api/auth"; // cambia puerto
+const API_URL = "/api/auth"; // cambia puerto
 
 // LOGIN
 export async function login(email, password) {

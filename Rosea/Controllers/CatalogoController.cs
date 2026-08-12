@@ -32,7 +32,7 @@ namespace Rosea.Controllers
         [HttpPost]
         public async Task<IActionResult> BusquedaAvanzada(BusquedaAvanzadaDTO dto)
         {
-            var productos = await _productoService.BuscaquedaAvanzada(dto);
+            var productos =  _productoService.BuscaquedaAvanzada(dto);
 
            // return View(productos);
 
