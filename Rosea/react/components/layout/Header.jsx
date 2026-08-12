@@ -1,34 +1,55 @@
+import NavbarLinks from "./NavbarLinks";
+import UserMenu from "./UserMenu";
+
 import useCart from "../../hooks/useCart";
+import useSession from "../../hooks/useSession";
+
+import { routes } from "../../config/routes";
 
 function Header() {
     const { cantidadTotal } = useCart();
 
+    const {
+        role,
+        user,
+        isAuthenticated
+    } = useSession();
+
     return (
-        <header className="border-bottom bg-white">
-            <div className="container py-3">
-                <div className="d-flex justify-content-between align-items-center">
+        <header>
+            <nav className="navbar navbar-expand-lg navbar-glass sticky-top">
+                <div className="container">
                     <a
-                        href="/Store/IndexR"
-                        className="text-decoration-none text-dark"
+                        className="navbar-brand fw-bold fs-4 text-rose"
+                        href={routes.store}
                     >
-                        <span className="fs-3 fw-bold">
-                            Rosea
-                        </span>
+                        🌸 Rosea
                     </a>
 
-                    <nav className="d-flex align-items-center gap-3">
-                        <a
-                            href="/Store/IndexR"
-                            className="text-decoration-none"
-                        >
-                            Tienda
-                        </a>
+                    <button
+                        className="navbar-toggler"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#menuRoseaReact"
+                        aria-controls="menuRoseaReact"
+                        aria-expanded="false"
+                        aria-label="Mostrar navegación"
+                    >
+                        <span className="navbar-toggler-icon" />
+                    </button>
+
+                    <div
+                        className="collapse navbar-collapse"
+                        id="menuRoseaReact"
+                    >
+                        <NavbarLinks role={role} />
 
                         <a
-                            href="/Cart/IndexR"
-                            className="btn btn-outline-primary position-relative"
+                            className="nav-link position-relative me-3"
+                            href={routes.cart}
+                            aria-label={`Carrito con ${cantidadTotal} productos`}
                         >
-                            Carrito
+                            <i className="bi bi-cart3 fs-5" />
 
                             {cantidadTotal > 0 && (
                                 <span
@@ -50,9 +71,16 @@ function Header() {
                                 </span>
                             )}
                         </a>
-                    </nav>
+
+                        <UserMenu
+                            user={user}
+                            isAuthenticated={
+                                isAuthenticated
+                            }
+                        />
+                    </div>
                 </div>
-            </div>
+            </nav>
         </header>
     );
 }

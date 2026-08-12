@@ -18,7 +18,7 @@ function StorePage() {
     } = useProducts();
 
     return (
-        <>
+        <div className="d-flex flex-column min-vh-100">
             <Header />
 
             <main className="py-4">
@@ -92,7 +92,7 @@ function StorePage() {
             </main>
 
             <Footer />
-        </>
+        </div>
     );
 }
 
